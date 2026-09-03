@@ -1,0 +1,198 @@
+/* ─────────────────────────────────────────────────────────────────────
+   v7 design layer — 2026-09-03.
+   Loaded AFTER the inline stylesheet in index.html and overrides only.
+   Same brand tokens (carbon / gold / cyan), new language: dark stage,
+   glass panels with edge light, tighter display type, left-aligned hero
+   with the spectrum sculpture (v7.js), calmer motion.
+   Nothing here touches copy, i18n keys, ids or the KO/EN toggle.
+   ───────────────────────────────────────────────────────────────────── */
+:root {
+  --v7-bg: #06070a;
+  --v7-line: rgba(255,255,255,.08);
+  --v7-line-2: rgba(255,255,255,.14);
+  --v7-glass: linear-gradient(180deg, rgba(18,19,26,.82), rgba(10,11,16,.74));
+  --v7-glass-hi: inset 0 1px 0 rgba(255,255,255,.07);
+  --v7-shadow: 0 30px 60px -40px rgba(0,0,0,.85);
+  --v7-ease: cubic-bezier(.2,.7,.2,1);
+}
+html, body { background: var(--v7-bg); }
+body { font-weight: 400; }
+
+/* film grain — the one texture the whole page shares */
+body::after {
+  content: ""; position: fixed; inset: -50%; width: 200%; height: 200%;
+  pointer-events: none; z-index: 60; opacity: .05; mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  animation: v7grain 1.2s steps(6) infinite;
+}
+@keyframes v7grain { 0%{transform:translate(0,0)} 25%{transform:translate(-2%,1%)} 50%{transform:translate(1%,-2%)} 75%{transform:translate(-1%,-1%)} 100%{transform:translate(2%,2%)} }
+
+/* ── type ─────────────────────────────────────────────────────────── */
+.display, h1, h2, h3 {
+  font-family: 'Outfit', 'Pretendard', 'Inter', sans-serif;
+  font-weight: 600; letter-spacing: -.035em; line-height: 1.02;
+}
+h1 { font-size: clamp(36px, 4.1vw, 60px); max-width: none; letter-spacing: -.04em; }   /* EN: three phrases, ~4 lines in the left column */
+html[lang="ko"] .hero h1 { font-size: clamp(44px, 5.6vw, 84px); }
+.hero h1 .accent { font-weight: 700; }
+html[lang="ko"] h1 { font-weight: 800; letter-spacing: -.03em; }
+h2 { font-size: clamp(34px, 4.6vw, 64px); }
+h3 { font-weight: 600; }
+.lede { font-size: clamp(16px, 1.2vw, 18px); color: rgba(255,255,255,.72); font-weight: 400; line-height: 1.65; }
+.eyebrow { display: inline-flex; align-items: center; gap: 10px; }
+.eyebrow::before { content: ""; width: 4px; height: 14px; background: var(--gold-400); box-shadow: 7px 0 0 var(--cyan-400); margin-right: 7px; }
+
+/* ── nav ──────────────────────────────────────────────────────────── */
+nav.top { backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); background: rgba(6,7,10,.62); border-bottom: 1px solid var(--v7-line); }
+
+/* ── hero: the sound is the stage — full-bleed spectral arena, copy floats on the left ── */
+.hero { padding: calc(72px + 4vh) 0 clamp(56px, 7vh, 96px); position: relative; overflow: hidden; }
+.hero .inner { display: block; text-align: left; position: relative; }
+.hero-grid { display: block; min-height: min(78vh, 760px); position: relative; }
+.hero-copy {
+  position: relative; z-index: 3; display: flex; flex-direction: column; align-items: flex-start; gap: 20px;
+  max-width: 660px; padding-top: 1vh;
+}
+.hero-copy .pill { margin: 0; }
+.hero-sub { max-width: 660px; text-align: left; display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.hero-sub .lede { margin: 0; font-size: clamp(16px, 1.15vw, 18px); grid-column: 1 / -1; }
+.hero-sub .lede + .lede { grid-column: auto; }
+/* the two secondary paragraphs become compact glass notes */
+.hero-sub .lede + .lede {
+  margin-top: 0 !important; font-size: 13px !important; opacity: .82 !important; line-height: 1.5 !important;
+  padding: 12px 14px; border-radius: 12px; border: 1px solid var(--v7-line);
+  background: rgba(255,255,255,.03); backdrop-filter: blur(6px);
+}
+.hero-cta-row { justify-content: flex-start; margin: 0; }
+.hero-trust { justify-content: flex-start !important; margin-top: 2px !important; }
+
+/* full-bleed stage: sits behind the copy, bleeds past the container on the right */
+.hero-visual {
+  position: absolute; z-index: 1; top: -6vh; bottom: -4vh; left: 28%; right: calc(-1 * var(--gutter-x) - 6vw);
+  pointer-events: none;
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 22%, #000 100%);
+          mask-image: linear-gradient(90deg, transparent 0%, #000 22%, #000 100%);
+}
+.hero-visual canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+.v7-chip {
+  position: absolute; right: calc(var(--gutter-x) + 6vw + 8px); bottom: 12vh; z-index: 2;
+  display: inline-flex; align-items: center; gap: 8px; padding: 9px 13px; border-radius: 999px;
+  border: 1px solid var(--v7-line-2); background: rgba(6,7,10,.55); backdrop-filter: blur(8px);
+  font: 600 11px/1 'JetBrains Mono', monospace; letter-spacing: .14em; color: var(--cyan-300); transition: color .4s;
+}
+.v7-chip::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: currentColor; box-shadow: 0 0 12px currentColor; }
+.v7-chip.is-raw { color: var(--hot-400); }
+html[lang="ko"] .v7-chip { font-family: 'Pretendard', sans-serif; letter-spacing: .02em; font-weight: 600; }
+.v7-cap {
+  position: absolute; right: calc(var(--gutter-x) + 6vw + 8px); bottom: calc(12vh - 22px); z-index: 2;
+  font: 500 10px/1 'JetBrains Mono', monospace; letter-spacing: .16em; color: rgba(255,255,255,.38);
+}
+/* keep the copy readable where the arena passes behind it */
+.hero-grid::before {
+  content: ""; position: absolute; z-index: 2; top: -8vh; bottom: -6vh; left: -20vw; width: 72%;
+  background: linear-gradient(90deg, rgba(6,7,10,.92) 30%, rgba(6,7,10,.55) 70%, rgba(6,7,10,0) 100%);
+  pointer-events: none;
+}
+
+/* gauge & stats → one glass panel */
+.gauge-wrap {
+  margin-top: clamp(40px, 6vh, 72px); border-radius: 24px; border: 1px solid var(--v7-line);
+  background: var(--v7-glass); box-shadow: var(--v7-glass-hi), var(--v7-shadow);
+  backdrop-filter: blur(10px);
+}
+.stats { margin-top: 24px; }
+
+/* ── sections ─────────────────────────────────────────────────────── */
+.section-head { text-align: left; margin-bottom: clamp(40px, 6vh, 64px); }
+.section-head .lede { max-width: 58ch; margin-left: 0; }
+.section-head .eyebrow { margin-bottom: 22px; }
+
+/* proof bar → quiet spec strip */
+.proof-bar { border-top: 1px solid var(--v7-line); border-bottom: 1px solid var(--v7-line); background: rgba(255,255,255,.02); }
+
+/* ── glass cards ──────────────────────────────────────────────────── */
+.feat, .demo-card, .price-card, .faq-item, .chain-node, .step, .guide-card {
+  border-radius: 20px; border: 1px solid var(--v7-line);
+  background: var(--v7-glass); box-shadow: var(--v7-glass-hi), var(--v7-shadow);
+  transition: transform .5s var(--v7-ease), border-color .3s, box-shadow .3s;
+}
+.feat:hover, .demo-card:hover, .price-card:hover, .guide-card:hover {
+  transform: translateY(-4px); border-color: rgba(233,191,106,.35);
+  box-shadow: var(--v7-glass-hi), 0 40px 80px -40px rgba(0,0,0,.9), 0 0 0 1px rgba(233,191,106,.12);
+}
+.price-card.featured {
+  border-color: rgba(212,166,74,.55);
+  background: linear-gradient(180deg, rgba(212,166,74,.12), rgba(255,255,255,.02));
+}
+.feat .ico { border-radius: 12px; }
+.feat p, .step p { font-weight: 400; }
+
+/* ── buttons ──────────────────────────────────────────────────────── */
+.btn-gold, .btn-ghost, .nav-studio { transition: transform .25s var(--v7-ease), box-shadow .25s, background .25s, border-color .25s; will-change: transform; }
+.btn-gold:hover { box-shadow: 0 1px 0 rgba(255,255,255,.32) inset, 0 14px 34px -10px rgba(212,166,74,.6); }
+
+/* ── bottom CTA ───────────────────────────────────────────────────── */
+.cta-bottom { position: relative; }
+
+/* ── responsive ───────────────────────────────────────────────────── */
+@media (max-width: 1000px) {
+  .hero-grid { min-height: 0; }
+  .hero-copy { max-width: none; padding-top: 44vw; }
+  .hero-visual { top: -2vh; bottom: auto; height: 62vw; left: -10vw; right: -10vw; mask-image: linear-gradient(180deg, #000 55%, transparent 100%); -webkit-mask-image: linear-gradient(180deg, #000 55%, transparent 100%); }
+  .hero-grid::before { display: none; }
+  .hero-sub { grid-template-columns: 1fr; }
+  .v7-chip { right: auto; left: 0; bottom: auto; top: 2vh; }
+  .v7-cap { display: none; }
+}
+@media (max-width: 640px) {
+  .hero { padding-top: calc(64px + 2vh); }
+  .hero-copy { padding-top: 58vw; }
+  .hero-visual { height: 80vw; }
+  h1 { font-size: clamp(38px, 11vw, 54px); }
+  .hero-sub .lede + .lede { display: none; }   /* phone: one paragraph is enough above the fold */
+}
+@media (prefers-reduced-motion: reduce) {
+  body::after { animation: none; }
+  .feat, .demo-card, .price-card, .btn-gold, .btn-ghost { transition: none; }
+}
+
+/* ===== v7.2 — rhythm below the fold: denser glass, calmer background, bookend arena ===== */
+section { padding: clamp(64px, 9vw, 120px) 0; }
+.section-head { margin-bottom: clamp(30px, 5vh, 52px); }
+.section-head h2 .accent, .cta-bottom h2 .accent { background: linear-gradient(90deg, var(--gold-200), var(--cyan-300)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.bg-stage canvas { opacity: .16; }
+.bg-stage::before { opacity: .6; }
+.proof-bar { padding: 14px 0; }
+.proof-stats.v7-marquee { display: block; overflow: hidden; -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); }
+.v7-ticker { display: flex; align-items: center; gap: 40px; width: max-content; animation: v7tick 44s linear infinite; }
+.v7-ticker .proof-stat { flex: none; white-space: nowrap; }
+.v7-ticker .proof-divider { flex: none; }
+.proof-stats.v7-marquee:hover .v7-ticker { animation-play-state: paused; }
+@keyframes v7tick { to { transform: translateX(-33.333%); } }
+.chain-node { padding: 26px 18px 24px; }
+.chain-glyph { width: 64px; height: 64px; border-radius: 16px; display: grid; place-items: center; margin: 0 auto 18px; background: rgba(212,166,74,.08); border: 1px solid var(--v7-line-2); color: var(--gold-200); box-shadow: inset 0 1px 0 rgba(255,255,255,.08); }
+.stage-tag { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: .16em; color: rgba(255,255,255,.42); }
+.chain-node h3 { font-size: 17px; margin: 10px 0 8px; }
+.chain-node p { font-size: 13px; color: rgba(255,255,255,.62); }
+.step { padding: 28px 22px 26px; }
+.step .num-circle { width: 54px; height: 54px; border: 0; background: linear-gradient(180deg, #f5d488, #d4a64a); color: #1a1208; font-family: 'Outfit', sans-serif; font-weight: 600; font-size: 20px; box-shadow: 0 1px 0 rgba(255,255,255,.35) inset, 0 12px 28px -12px rgba(212,166,74,.6); }
+.step h3 { font-size: 19px; margin: 18px 0 8px; }
+.demo-card { border-radius: 22px; }
+.demo-card video { border-radius: 22px 22px 0 0; }
+.price-card { padding-top: 34px; }
+.price-card .price { font-weight: 500; letter-spacing: -.04em; }
+.price-card.featured { box-shadow: var(--v7-glass-hi), 0 40px 90px -40px rgba(0,0,0,.9), 0 0 0 1px rgba(212,166,74,.35), 0 0 60px -20px rgba(212,166,74,.35); }
+.price-card .btn-card { border-radius: 999px; }
+.price-card .tier { font-family: 'JetBrains Mono', monospace; letter-spacing: .16em; }
+.faq-item { border-radius: 16px; margin-bottom: 10px; }
+.faq-q { font-size: 16px; font-weight: 600; padding: 18px 20px; }
+.faq-q .mark { width: 28px; height: 28px; border-radius: 50%; background: rgba(212,166,74,.12); color: var(--gold-200); display: grid; place-items: center; }
+.faq-a-inner { padding: 0 20px 20px; color: rgba(255,255,255,.66); }
+.guide-card { padding: 24px; }
+.cta-bottom { position: relative; overflow: hidden; padding: clamp(110px, 16vh, 190px) 0; }
+.cta-bottom .container { position: relative; z-index: 1; }
+.v7-arena2 { position: absolute; left: 0; right: 0; top: -8%; height: 118%; width: 100%; z-index: 0; pointer-events: none; display: block; -webkit-mask-image: linear-gradient(180deg, transparent 0%, #000 22%, #000 78%, transparent 100%); mask-image: linear-gradient(180deg, transparent 0%, #000 22%, #000 78%, transparent 100%); }
+.cta-bottom h2 { font-size: clamp(40px, 5.6vw, 76px); margin-bottom: 30px; }
+.cta-bottom .btn-gold { font-size: 16px; padding: 16px 26px; }
+.site-foot { border-top: 1px solid var(--v7-line); background: rgba(255,255,255,.015); }
+@media (max-width: 640px) { section { padding: 56px 0; } .cta-bottom { padding: 90px 0; } .v7-ticker { animation-duration: 30s; } }
