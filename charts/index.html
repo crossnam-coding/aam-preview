@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
-<title>[시안] Mastered Charts — Anti-AI Master</title>
+<title>[시안 v2] Mastered Charts — Anti-AI Master</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css" rel="stylesheet">
@@ -15,6 +15,8 @@
 --mono:'JetBrains Mono',ui-monospace,monospace;--disp:'Outfit','Pretendard Variable',sans-serif;--body:'Pretendard Variable','Inter',system-ui,sans-serif;--ease:cubic-bezier(.2,.7,.2,1)}
 *{box-sizing:border-box} a{color:inherit;text-decoration:none} button{font:inherit;color:inherit;cursor:pointer}
 body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--body);font-size:14px;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden;padding-bottom:110px}
+html[lang=en] body{font-family:'Inter','Pretendard Variable',system-ui,sans-serif}
+.en{display:none} html[lang=en] .en{display:inline} html[lang=en] .ko{display:none}
 body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;background:radial-gradient(70% 45% at 50% -10%,rgba(212,166,74,.16),transparent 60%),radial-gradient(40% 30% at 90% 20%,rgba(77,208,214,.07),transparent 70%)}
 body::after{content:"";position:fixed;inset:-50%;width:200%;height:200%;pointer-events:none;z-index:80;opacity:.05;mix-blend-mode:overlay;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>")}
 .top{position:sticky;top:0;z-index:40;display:flex;align-items:center;gap:22px;padding:14px clamp(16px,4vw,48px);background:rgba(6,7,10,.6);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
@@ -22,99 +24,104 @@ body::after{content:"";position:fixed;inset:-50%;width:200%;height:200%;pointer-
 .brand i{width:26px;height:26px;border-radius:8px;background:linear-gradient(135deg,#fbe9b0,#b88932);box-shadow:0 0 18px rgba(212,166,74,.35)}
 .nav{display:flex;gap:22px;font-weight:500;font-size:13.5px;color:var(--fg2)} .nav a.on{color:var(--fg)}
 .top .r{margin-left:auto;display:flex;gap:10px;align-items:center}
-.btn{display:inline-flex;align-items:center;gap:8px;padding:10px 16px;border-radius:999px;border:1px solid var(--line2);background:rgba(255,255,255,.03);font-weight:600;font-size:13px;transition:transform .25s var(--ease),border-color .2s,box-shadow .25s}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:10px 16px;border-radius:999px;border:1px solid var(--line2);background:rgba(255,255,255,.03);font-weight:600;font-size:13px;transition:transform .25s var(--ease),border-color .2s,box-shadow .25s;white-space:nowrap}
 .btn:hover{transform:translateY(-1px);border-color:rgba(255,255,255,.3)}
 .btn.gold{background:linear-gradient(180deg,#f5d488,#d4a64a);color:#1a1208;border-color:transparent;box-shadow:0 1px 0 rgba(255,255,255,.35) inset,0 10px 26px -10px rgba(212,166,74,.55)}
-.btn.big{padding:15px 26px;font-size:15px}
+.btn.big{padding:15px 26px;font-size:15px} .btn.ghost{background:transparent}
+.lang{font-family:var(--mono);font-size:11px;letter-spacing:.12em;padding:8px 11px}
 main{position:relative;z-index:1}
 .wrap{max-width:1080px;margin:0 auto;padding:0 clamp(16px,4vw,48px)}
 .kicker{display:inline-flex;align-items:center;gap:10px;font-family:var(--mono);font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--fg3)}
 .kicker::before{content:"";width:4px;height:13px;background:var(--gold);box-shadow:7px 0 0 var(--cyan);margin-right:7px}
 .chip{display:inline-flex;align-items:center;gap:6px;padding:6px 11px;border-radius:999px;border:1px solid var(--line);font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--fg3);white-space:nowrap}
-.chip.on{color:var(--gold3);border-color:rgba(212,166,74,.5);background:rgba(212,166,74,.1)}
-.chip.cy{color:var(--cyan2);border-color:rgba(77,208,214,.35)}
+.chip.on{color:var(--gold3);border-color:rgba(212,166,74,.5);background:rgba(212,166,74,.1)} .chip.cy{color:var(--cyan2);border-color:rgba(77,208,214,.35)} .chip.ok{color:var(--ok);border-color:rgba(52,211,153,.4)}
 .glass{border-radius:22px;border:1px solid var(--line);background:var(--glass);box-shadow:var(--hi),var(--sh);backdrop-filter:blur(10px)}
 .screen{display:none} .screen.on{display:block;animation:in .45s var(--ease)} @keyframes in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
-
-/* ---- landing = chart ---- */
-.hero{padding:clamp(56px,9vh,96px) 0 34px;display:grid;grid-template-columns:1.2fr .8fr;gap:32px;align-items:end}
 h1{font-family:var(--disp);font-weight:600;font-size:clamp(30px,4.1vw,54px);letter-spacing:-.035em;line-height:1.02;margin:14px 0 14px}
 h1 b{font-weight:700;background:linear-gradient(90deg,var(--gold3),var(--gold2));-webkit-background-clip:text;background-clip:text;color:transparent}
+h1 .thin{font-weight:300;color:var(--fg2)}
 .sub{color:var(--fg2);font-size:16px;margin:0 0 22px;max-width:46ch}
 .cta{display:flex;gap:10px;flex-wrap:wrap}
+
+/* 0. studio result */
+.res{display:grid;grid-template-columns:1.25fr .75fr;gap:22px;margin-top:22px}
+.player0{padding:22px}
+.ab{display:inline-flex;padding:3px;border-radius:999px;border:1px solid var(--line2);background:rgba(6,7,10,.6)}
+.ab button{border:0;background:transparent;color:var(--fg3);font-family:var(--mono);font-size:11px;letter-spacing:.14em;padding:9px 16px;border-radius:999px}
+.ab button.on{background:rgba(212,166,74,.2);color:var(--gold3)}
+.head0{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:16px} .head0 .lbl{font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;color:var(--fg3)}
+.bigwave{height:120px;border-radius:16px;border:1px solid var(--line);background:rgba(0,0,0,.25);position:relative;overflow:hidden;display:flex;align-items:center;gap:2px;padding:0 14px}
+.bigwave i{flex:1;background:var(--gold2);opacity:.85;border-radius:2px} .bigwave i.p{opacity:.3}
+.ctl{display:flex;gap:12px;align-items:center;margin:14px 0 0}
+.meters{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:16px}
+.meter{padding:12px 12px 10px;border-radius:12px;border:1px solid var(--line);background:rgba(255,255,255,.025)}
+.meter i{font-style:normal;font-family:var(--mono);font-size:9.5px;letter-spacing:.16em;color:var(--fg3);display:block;margin-bottom:6px}
+.meter b{font-family:var(--disp);font-weight:500;font-size:22px;letter-spacing:-.02em} .meter b small{font-size:11px;color:var(--fg3);margin-left:4px;font-family:var(--mono)}
+.side{padding:22px} .side h4{margin:0 0 12px;font-family:var(--mono);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--fg3);font-weight:600}
+.side .cta2{display:grid;gap:8px}
+.chartcta{padding:16px;border-radius:16px;border:1px solid rgba(212,166,74,.4);background:linear-gradient(135deg,rgba(212,166,74,.16),rgba(212,166,74,.03));margin-bottom:12px}
+.chartcta b{display:block;font-size:15px;margin-bottom:4px} .chartcta span{font-size:12.5px;color:var(--fg2)}
+.credits{display:flex;justify-content:space-between;margin-top:14px;padding-top:14px;border-top:1px solid var(--line);font-size:12.5px;color:var(--fg2)} .credits b{color:var(--gold3);font-family:var(--mono)}
+
+/* 1. chart landing */
+.hero{padding:clamp(56px,9vh,96px) 0 34px;display:grid;grid-template-columns:1.2fr .8fr;gap:32px;align-items:end}
 .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
 .stat{padding:16px 16px 14px;border-radius:16px;border:1px solid var(--line);background:rgba(255,255,255,.025)}
 .stat i{display:block;font-family:var(--mono);font-size:9.5px;letter-spacing:.16em;color:var(--fg3);margin-bottom:8px;font-style:normal}
-.stat b{font-family:var(--disp);font-weight:500;font-size:26px;letter-spacing:-.03em}
-.stat b small{font-size:11px;color:var(--fg3);margin-left:4px;font-family:var(--mono)}
-.filters{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin:26px 0 12px}
-.filters .sp{flex:1}
-.filters .wk{font-family:var(--mono);font-size:11px;letter-spacing:.12em;color:var(--fg3)}
+.stat b{font-family:var(--disp);font-weight:500;font-size:26px;letter-spacing:-.03em} .stat b small{font-size:11px;color:var(--fg3);margin-left:4px;font-family:var(--mono)}
+.mine{display:none;grid-template-columns:auto 1fr auto;gap:14px;align-items:center;padding:14px 16px;border-radius:16px;border:1px solid rgba(52,211,153,.4);background:linear-gradient(90deg,rgba(52,211,153,.12),rgba(52,211,153,.02));margin:22px 0 0}
+.mine.on{display:grid} .mine b{display:block;font-size:14px} .mine span{font-size:12.5px;color:var(--fg2)}
+.filters{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin:26px 0 12px} .filters .sp{flex:1} .filters .wk{font-family:var(--mono);font-size:11px;letter-spacing:.12em;color:var(--fg3)}
 .chart{display:grid;gap:6px}
 .row{display:grid;grid-template-columns:44px 56px 1fr auto auto auto;gap:16px;align-items:center;padding:12px 16px;border-radius:16px;border:1px solid transparent;transition:background .2s,border-color .2s,transform .3s var(--ease)}
 .row:hover{background:rgba(255,255,255,.035);border-color:var(--line);transform:translateX(2px)}
 .row.top{background:linear-gradient(90deg,rgba(212,166,74,.14),rgba(212,166,74,.02));border-color:rgba(212,166,74,.35)}
+.row.me{border-color:rgba(52,211,153,.45);background:linear-gradient(90deg,rgba(52,211,153,.10),transparent)}
 .rank{font-family:var(--disp);font-weight:300;font-size:26px;letter-spacing:-.04em;color:var(--fg2);display:flex;flex-direction:column;line-height:1}
-.rank small{font-family:var(--mono);font-size:9.5px;letter-spacing:.08em;margin-top:4px}
-.rank small.up{color:var(--ok)} .rank small.dn{color:var(--hot)} .rank small.new{color:var(--cyan2)}
+.rank small{font-family:var(--mono);font-size:9.5px;letter-spacing:.08em;margin-top:4px} .rank small.up{color:var(--ok)} .rank small.dn{color:var(--hot)} .rank small.new{color:var(--cyan2)}
 .row.top .rank{color:var(--gold2);font-weight:500}
-.cover{width:56px;height:56px;border-radius:12px;display:grid;place-items:center;font-family:var(--disp);font-weight:700;font-size:16px;color:#0b0c10;box-shadow:var(--hi),0 10px 24px -12px rgba(0,0,0,.8);position:relative;overflow:hidden}
+.cover{width:56px;height:56px;border-radius:12px;display:grid;place-items:center;font-family:var(--disp);font-weight:700;font-size:16px;color:#0b0c10;box-shadow:var(--hi),0 10px 24px -12px rgba(0,0,0,.8);position:relative;overflow:hidden;flex:none}
 .cover::after{content:"";position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.35),transparent 55%)}
-.c1{background:linear-gradient(135deg,#f5d488,#8d6620)} .c2{background:linear-gradient(135deg,#7be0e5,#1d6f73)} .c3{background:linear-gradient(135deg,#ff9f86,#8a2d1c)} .c4{background:linear-gradient(135deg,#c9b6ff,#4a3a99)} .c5{background:linear-gradient(135deg,#9ff0c9,#1e6b4a)} .c6{background:linear-gradient(135deg,#ffd6a5,#9c5a2a)} .c7{background:linear-gradient(135deg,#a5c8ff,#2b4c8a)} .c8{background:linear-gradient(135deg,#f3a5ff,#6a2a7a)}
+.c1{background:linear-gradient(135deg,#f5d488,#8d6620)} .c2{background:linear-gradient(135deg,#7be0e5,#1d6f73)} .c3{background:linear-gradient(135deg,#ff9f86,#8a2d1c)} .c4{background:linear-gradient(135deg,#c9b6ff,#4a3a99)} .c5{background:linear-gradient(135deg,#9ff0c9,#1e6b4a)} .c6{background:linear-gradient(135deg,#ffd6a5,#9c5a2a)} .c7{background:linear-gradient(135deg,#a5c8ff,#2b4c8a)} .c8{background:linear-gradient(135deg,#f3a5ff,#6a2a7a)} .c9{background:linear-gradient(135deg,#ffe9a8,#b88932)}
 .meta{min-width:0} .meta b{display:block;font-weight:600;font-size:15px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis} .meta span{color:var(--fg3);font-size:12.5px}
 .meta .tags{display:flex;gap:6px;margin-top:5px} .meta .tags .chip{padding:3px 8px;font-size:9px}
 .plays{font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:var(--fg3);white-space:nowrap}
 .like{display:inline-flex;align-items:center;gap:7px;padding:8px 12px;border-radius:999px;border:1px solid var(--line2);background:rgba(255,255,255,.03);font-family:var(--mono);font-size:11.5px;color:var(--fg2);transition:all .2s}
-.like:hover,.like.on{border-color:rgba(255,122,92,.5);color:#ffb3a3;background:rgba(255,122,92,.1)}
-.like svg{width:13px;height:13px}
-.play{width:38px;height:38px;border-radius:50%;border:1px solid var(--line2);background:rgba(255,255,255,.04);display:grid;place-items:center;transition:all .2s}
-.play:hover,.play.on{background:linear-gradient(180deg,#f5d488,#d4a64a);border-color:transparent;color:#1a1208}
-.play svg{width:14px;height:14px}
+.like:hover,.like.on{border-color:rgba(255,122,92,.5);color:#ffb3a3;background:rgba(255,122,92,.1)} .like svg{width:13px;height:13px}
+.play{width:38px;height:38px;border-radius:50%;border:1px solid var(--line2);background:rgba(255,255,255,.04);display:grid;place-items:center;transition:all .2s;flex:none}
+.play:hover,.play.on{background:linear-gradient(180deg,#f5d488,#d4a64a);border-color:transparent;color:#1a1208} .play svg{width:14px;height:14px}
 .more{display:flex;justify-content:center;margin:18px 0 0}
 .howrow{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:56px}
-.how{padding:18px 18px 16px;border-radius:16px;border:1px solid var(--line);background:rgba(255,255,255,.025);display:flex;gap:14px;align-items:center}
+.how{padding:18px;border-radius:16px;border:1px solid var(--line);background:rgba(255,255,255,.025);display:flex;gap:14px;align-items:center}
 .how .n{width:34px;height:34px;border-radius:50%;background:linear-gradient(180deg,#f5d488,#d4a64a);color:#1a1208;font-family:var(--disp);font-weight:600;display:grid;place-items:center;flex:none}
 .how b{display:block;font-weight:600;margin-bottom:2px} .how span{color:var(--fg3);font-size:12.5px}
-.foot{display:flex;justify-content:space-between;align-items:center;margin-top:48px;padding-top:18px;border-top:1px solid var(--line);color:var(--fg3);font-size:12.5px;flex-wrap:wrap;gap:10px}
-.foot a{color:var(--fg2)}
-/* bottom player */
+.foot{display:flex;justify-content:space-between;align-items:center;margin-top:48px;padding-top:18px;border-top:1px solid var(--line);color:var(--fg3);font-size:12.5px;flex-wrap:wrap;gap:10px} .foot a{color:var(--fg2)}
 .player{position:fixed;left:50%;bottom:16px;transform:translateX(-50%);z-index:50;width:min(880px,calc(100% - 24px));display:grid;grid-template-columns:44px 1fr auto;gap:14px;align-items:center;padding:10px 12px 10px 10px;border-radius:18px}
-.player .cover{width:44px;height:44px;border-radius:10px;font-size:13px}
-.player .t b{display:block;font-size:13px;font-weight:600} .player .t span{font-size:11.5px;color:var(--fg3)}
-.wave{height:34px;display:flex;align-items:center;gap:2px;margin-top:4px}
-.wave i{width:3px;background:var(--gold2);opacity:.9;border-radius:2px;animation:wv 1.1s ease-in-out infinite}
-.wave i:nth-child(odd){background:var(--cyan2)}
+.player .cover{width:44px;height:44px;border-radius:10px;font-size:13px} .player .t b{display:block;font-size:13px;font-weight:600} .player .t span{font-size:11.5px;color:var(--fg3)}
+.wave{height:34px;display:flex;align-items:center;gap:2px;margin-top:4px} .wave i{width:3px;background:var(--gold2);opacity:.9;border-radius:2px;animation:wv 1.1s ease-in-out infinite} .wave i:nth-child(odd){background:var(--cyan2)}
 @keyframes wv{0%,100%{transform:scaleY(.4)}50%{transform:scaleY(1)}}
 .player .ctrl{display:flex;gap:8px;align-items:center}
-/* flow bar */
 .flow{position:fixed;right:16px;top:70px;z-index:60;display:flex;flex-direction:column;gap:4px;padding:6px;border-radius:14px;border:1px solid var(--line2);background:rgba(6,7,10,.75);backdrop-filter:blur(12px)}
 .flow span{font-family:var(--mono);font-size:9px;letter-spacing:.14em;color:var(--fg3);padding:4px 8px}
-.flow button{border:0;background:transparent;color:var(--fg3);font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;padding:7px 10px;border-radius:9px;text-align:left}
-.flow button.on{background:rgba(212,166,74,.18);color:var(--gold3)}
+.flow button{border:0;background:transparent;color:var(--fg3);font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;padding:7px 10px;border-radius:9px;text-align:left} .flow button.on{background:rgba(212,166,74,.18);color:var(--gold3)}
+.toast{position:fixed;left:50%;top:74px;transform:translateX(-50%) translateY(-10px);z-index:65;padding:12px 16px;border-radius:14px;border:1px solid rgba(52,211,153,.45);background:rgba(10,20,16,.9);color:var(--fg);font-size:13px;opacity:0;transition:all .4s var(--ease);pointer-events:none;display:flex;gap:10px;align-items:center}
+.toast.on{opacity:1;transform:translateX(-50%) translateY(0)} .toast i{width:8px;height:8px;border-radius:50%;background:var(--ok);box-shadow:0 0 10px var(--ok)}
 
-/* ---- track page ---- */
+/* 2. track */
 .track{padding:48px 0 0;display:grid;grid-template-columns:320px 1fr;gap:36px;align-items:start}
 .bigcover{width:100%;height:auto;aspect-ratio:1;border-radius:24px;font-size:64px}
-.track h1{font-size:clamp(30px,4vw,52px);margin:8px 0 6px}
-.track .by{color:var(--fg2);font-size:16px;margin:0 0 18px}
-.track .tags{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:22px}
-.bigwave{height:120px;border-radius:16px;border:1px solid var(--line);background:rgba(0,0,0,.25);position:relative;overflow:hidden;display:flex;align-items:center;gap:2px;padding:0 14px}
-.bigwave i{flex:1;background:var(--gold2);opacity:.85;border-radius:2px} .bigwave i.p{opacity:.3}
-.track .ctl{display:flex;gap:10px;align-items:center;margin:16px 0 26px}
+.track h1{font-size:clamp(30px,4vw,52px);margin:8px 0 6px} .track .by{color:var(--fg2);font-size:16px;margin:0 0 18px} .track .tags{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:22px}
+.track .ctl{margin:16px 0 26px}
 .share{padding:18px;display:grid;grid-template-columns:1fr auto;gap:16px;align-items:center}
-.share .card{padding:14px 16px;border-radius:14px;background:linear-gradient(135deg,#14151c,#0b0c10);border:1px solid rgba(212,166,74,.35);display:grid;grid-template-columns:48px 1fr;gap:12px;align-items:center}
-.share .card .cover{width:48px;height:48px;font-size:14px}
-.share .card b{display:block;font-size:14px} .share .card span{font-size:11.5px;color:var(--fg3);font-family:var(--mono);letter-spacing:.06em}
+.share .card{padding:14px 16px;border-radius:14px;background:linear-gradient(135deg,#14151c,#0b0c10);border:1px solid rgba(212,166,74,.35);display:grid;grid-template-columns:48px 1fr;gap:12px;align-items:center;min-width:250px}
+.share .card .cover{width:48px;height:48px;font-size:14px} .share .card b{display:block;font-size:14px} .share .card span{font-size:11.5px;color:var(--fg3);font-family:var(--mono);letter-spacing:.06em}
 .share .card em{font-style:normal;font-family:var(--disp);font-weight:700;color:var(--gold2);font-size:22px;letter-spacing:-.03em}
-.kv{display:grid;grid-template-columns:1fr auto;gap:8px 16px;font-size:13px;color:var(--fg2);margin-top:22px;padding:18px}
-.kv b{color:var(--fg);font-family:var(--mono);font-size:12px;font-weight:600}
+.kv{display:grid;grid-template-columns:1fr auto;gap:8px 16px;font-size:13px;color:var(--fg2);margin-top:22px;padding:18px} .kv b{color:var(--fg);font-family:var(--mono);font-size:12px;font-weight:600}
+.tools{display:flex;gap:14px;margin-top:14px;font-size:12px;color:var(--fg3)} .tools a{color:var(--fg3);text-decoration:underline;text-underline-offset:3px}
 
-/* ---- upload modal ---- */
-.modalback{position:fixed;inset:0;z-index:70;background:rgba(0,0,0,.6);backdrop-filter:blur(6px);display:none;place-items:center;padding:20px}
-.modalback.on{display:grid}
-.modal{width:min(560px,100%);padding:26px}
-.modal h2{font-family:var(--disp);font-weight:600;font-size:24px;letter-spacing:-.02em;margin:10px 0 6px}
-.modal p{color:var(--fg2);margin:0 0 18px}
+/* 3. upload modal */
+.modalback{position:fixed;inset:0;z-index:70;background:rgba(0,0,0,.6);backdrop-filter:blur(6px);display:none;place-items:center;padding:20px} .modalback.on{display:grid}
+.modal{width:min(560px,100%);padding:26px} .modal h2{font-family:var(--disp);font-weight:600;font-size:24px;letter-spacing:-.02em;margin:10px 0 6px} .modal p{color:var(--fg2);margin:0 0 18px}
 .field{display:grid;gap:6px;margin-bottom:12px} .field label{font-family:var(--mono);font-size:10px;letter-spacing:.16em;color:var(--fg3);text-transform:uppercase}
 .field input,.field select{background:rgba(255,255,255,.04);border:1px solid var(--line2);border-radius:12px;padding:12px 14px;color:var(--fg);font:inherit}
 .fields2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
@@ -123,66 +130,76 @@ h1 b{font-weight:700;background:linear-gradient(90deg,var(--gold3),var(--gold2))
 .chk{display:flex;gap:10px;align-items:flex-start;font-size:13px;color:var(--fg2);margin:8px 0} .chk input{margin-top:3px}
 .modal .row2{display:flex;gap:10px;justify-content:flex-end;margin-top:18px}
 
-@media (max-width:820px){.hero{grid-template-columns:1fr}.stats{grid-template-columns:repeat(3,1fr)}.row{grid-template-columns:34px 48px 1fr auto;gap:10px}.plays,.row .play{display:none}.howrow{grid-template-columns:1fr}.track{grid-template-columns:1fr}.bigcover{max-width:260px}.nav{display:none}.flow{top:auto;bottom:90px;flex-direction:row}.fields2{grid-template-columns:1fr}}
+@media (max-width:820px){.hero,.res,.track{grid-template-columns:1fr}.stats{grid-template-columns:repeat(3,1fr)}.row{grid-template-columns:34px 48px 1fr auto;gap:10px}.plays,.row .play{display:none}.howrow{grid-template-columns:1fr}.bigcover{max-width:260px}.nav{display:none}.flow{top:auto;bottom:92px;flex-direction:row;left:12px;right:auto}.fields2{grid-template-columns:1fr}.meters{grid-template-columns:1fr 1fr}.share{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
 <header class="top">
   <a class="brand" href="#"><i></i>Anti-AI Master</a>
-  <nav class="nav"><a class="on" href="#">차트</a><a href="#">스튜디오</a><a href="#">가격</a><a href="#">도움말</a></nav>
-  <div class="r"><button class="btn">로그인</button><button class="btn gold" onclick="openUp()">트랙 올리기 →</button></div>
+  <nav class="nav"><a class="on" href="#" onclick="go('chart');return false"><span class="ko">차트</span><span class="en">Charts</span></a><a href="#" onclick="go('res');return false"><span class="ko">스튜디오</span><span class="en">Studio</span></a><a href="#"><span class="ko">가격</span><span class="en">Pricing</span></a><a href="#"><span class="ko">도움말</span><span class="en">Help</span></a></nav>
+  <div class="r"><button class="btn lang" id="lang">EN</button><button class="btn"><span class="ko">로그인</span><span class="en">Sign in</span></button><button class="btn gold" onclick="go('res')"><span class="ko">트랙 올리기</span><span class="en">Upload a track</span> →</button></div>
 </header>
 
 <main>
-<!-- 1. LANDING = CHART -->
+<!-- 0. STUDIO RESULT -->
+<section class="screen" id="s-res"><div class="wrap">
+  <div style="padding-top:34px"><span class="kicker"><span class="ko">스튜디오 · 마스터 완료</span><span class="en">Studio · master ready</span> · POP PRO · 9.4s</span>
+  <h1><span class="ko">들어보고 <span class="thin">고르세요.</span></span><span class="en">Listen, <span class="thin">then choose.</span></span></h1></div>
+  <div class="res">
+    <div class="player0 glass">
+      <div class="head0"><span class="lbl">A/B · <span class="ko">같은 구간 · 같은 레벨</span><span class="en">same section · level-matched</span></span><div class="ab"><button>A · <span class="ko">원본</span><span class="en">RAW</span></button><button class="on">B · MASTER</button></div></div>
+      <div class="bigwave" id="bw0"></div>
+      <div class="ctl"><button class="play on"><svg viewBox="0 0 16 16" fill="currentColor"><path d="M4 3l9 5-9 5z"/></svg></button><span class="plays">1:14 / 3:14</span><span style="flex:1"></span><span class="chip ok">LIVE-MATCH™</span></div>
+      <div class="meters"><div class="meter"><i>INTEGRATED</i><b>-11.0<small>LUFS</small></b></div><div class="meter"><i>TRUE PEAK</i><b>-1.0<small>dBTP</small></b></div><div class="meter"><i>LRA</i><b>5.2<small>LU</small></b></div><div class="meter"><i>WIDTH</i><b>96<small>%</small></b></div></div>
+    </div>
+    <aside class="side glass">
+      <div class="chartcta"><b><span class="ko">이번 주 차트에 올릴까요?</span><span class="en">Put it on this week's chart?</span></b><span><span class="ko">여기서 마스터링한 곡만 올라가요. 순위는 좋아요로, 일요일 24시 마감.</span><span class="en">Only tracks mastered here. Ranked by likes, closes Sunday midnight.</span></span></div>
+      <div class="cta2"><button class="btn gold big" onclick="openUp()"><span class="ko">차트에 올리기</span><span class="en">Upload to chart</span> →</button><button class="btn"><span class="ko">24-bit WAV 다운로드</span><span class="en">Download 24-bit WAV</span></button><button class="btn ghost"><span class="ko">다른 프리셋으로 다시</span><span class="en">Try another preset</span></button></div>
+      <div class="credits"><span><span class="ko">크레딧</span><span class="en">Credits</span> <b>3</b></span><span><span class="ko">차트 업로드는 무료</span><span class="en">Chart upload is free</span></span></div>
+    </aside>
+  </div>
+</div></section>
+
+<!-- 1. CHART = LANDING -->
 <section class="screen on" id="s-chart"><div class="wrap">
   <div class="hero">
     <div>
       <span class="kicker">Mastered Charts · 2026 W36</span>
-      <h1><span style="white-space:nowrap">AI 음악, <b>스트리밍 기준</b>으로</span><br>마스터링.</h1>
-      <p class="sub">여기서 마스터링한 곡만 올라옵니다. 듣고, 좋아요로 이번 주 순위를 정하세요.</p>
-      <div class="cta"><button class="btn gold big" onclick="openUp()">내 트랙 마스터링하고 올리기 →</button><button class="btn big">▶ 1위 듣기</button></div>
+      <h1><span class="ko"><span style="white-space:nowrap">AI 음악, <b>스트리밍 기준</b>으로</span><br>마스터링.</span><span class="en">AI music, mastered<br><b>for streaming.</b></span></h1>
+      <p class="sub"><span class="ko">여기서 마스터링한 곡만 올라옵니다. 듣고, 좋아요로 이번 주 순위를 정하세요.</span><span class="en">Only tracks mastered here. Listen, and vote this week's chart with likes.</span></p>
+      <div class="cta"><button class="btn gold big" onclick="go('res')"><span class="ko">내 트랙 마스터링하고 올리기</span><span class="en">Master my track &amp; upload</span> →</button><button class="btn big">▶ <span class="ko">1위 듣기</span><span class="en">Play #1</span></button></div>
     </div>
-    <div class="stats">
-      <div class="stat"><i>THIS WEEK</i><b>128<small>곡</small></b></div>
-      <div class="stat"><i>PLAYS</i><b>4,120</b></div>
-      <div class="stat"><i>MASTERED · ALL TIME</i><b>2,132</b></div>
-    </div>
+    <div class="stats"><div class="stat"><i>THIS WEEK</i><b>128<small class="ko">곡</small><small class="en">TRACKS</small></b></div><div class="stat"><i>PLAYS</i><b>4,120</b></div><div class="stat"><i>MASTERED · ALL TIME</i><b>2,132</b></div></div>
   </div>
-
-  <div class="filters">
-    <span class="chip on">이번 주</span><span class="chip">신곡</span><span class="chip">ANTI-AI 만</span><span class="chip">스템</span><span class="chip">장르 ▾</span>
-    <span class="sp"></span><span class="wk">순위 마감 · 일요일 24:00 KST</span>
-  </div>
-
+  <div class="mine" id="mine"><div class="cover c9">GC</div><div><b><span class="ko">Glow Connection 이 차트에 올라갔어요 — 지금 #7 · NEW</span><span class="en">Glow Connection is on the chart — #7 · NEW</span></b><span><span class="ko">공유 카드를 SNS에 올리면 링크로 들어온 사람이 바로 듣고 좋아요를 눌러요.</span><span class="en">Share the card — people who land from it can play and like right away.</span></span></div><button class="btn gold" onclick="go('track')"><span class="ko">공유 카드 보기</span><span class="en">Share card</span></button></div>
+  <div class="filters"><span class="chip on"><span class="ko">이번 주</span><span class="en">This week</span></span><span class="chip"><span class="ko">신곡</span><span class="en">New</span></span><span class="chip">ANTI-AI</span><span class="chip">STEM</span><span class="chip"><span class="ko">장르</span><span class="en">Genre</span> ▾</span><span class="sp"></span><span class="wk"><span class="ko">순위 마감 · 일요일 24:00 KST</span><span class="en">Closes · Sunday 24:00 KST</span></span></div>
   <div class="chart" id="chart"></div>
-  <div class="more"><button class="btn">TOP 50 더 보기</button></div>
-
+  <div class="more"><button class="btn">TOP 50 <span class="ko">더 보기</span><span class="en">more</span></button></div>
   <div class="howrow">
-    <div class="how"><span class="n">1</span><div><b>마스터링</b><span>스튜디오에서 10초. 프리셋 하나 고르면 끝.</span></div></div>
-    <div class="how"><span class="n">2</span><div><b>차트에 올리기</b><span>결과 화면 버튼 하나. 커버는 자동 생성.</span></div></div>
-    <div class="how"><span class="n">3</span><div><b>공유 · 좋아요</b><span>내 순위 카드를 SNS에. 좋아요가 순위.</span></div></div>
+    <div class="how"><span class="n">1</span><div><b><span class="ko">마스터링</span><span class="en">Master</span></b><span><span class="ko">스튜디오에서 10초. 프리셋 하나 고르면 끝.</span><span class="en">10 seconds in the studio. Pick one preset.</span></span></div></div>
+    <div class="how"><span class="n">2</span><div><b><span class="ko">차트에 올리기</span><span class="en">Upload</span></b><span><span class="ko">결과 화면 버튼 하나. 커버는 자동 생성.</span><span class="en">One button on the result screen. Cover auto-generated.</span></span></div></div>
+    <div class="how"><span class="n">3</span><div><b><span class="ko">공유 · 좋아요</span><span class="en">Share · like</span></b><span><span class="ko">내 순위 카드를 SNS에. 좋아요가 순위.</span><span class="en">Post your rank card. Likes decide the chart.</span></span></div></div>
   </div>
-
-  <div class="foot"><span>가격 ₩5,900부터 · 24-bit 무손실 · <a href="#">요금 보기</a> · <a href="#">FAQ</a> · <a href="#">가이드</a></span><span>© Anti-AI Master · <a href="#">약관</a> · <a href="#">개인정보</a> · <a href="#">신고</a></span></div>
+  <div class="foot"><span><span class="ko">가격 ₩5,900부터 · 24-bit 무손실</span><span class="en">From $2.99 · 24-bit lossless</span> · <a href="#"><span class="ko">요금 보기</span><span class="en">Pricing</span></a> · <a href="#">FAQ</a> · <a href="#"><span class="ko">가이드</span><span class="en">Guides</span></a></span><span>© Anti-AI Master · <a href="#"><span class="ko">약관</span><span class="en">Terms</span></a> · <a href="#"><span class="ko">개인정보</span><span class="en">Privacy</span></a> · <a href="#"><span class="ko">신고</span><span class="en">Report</span></a></span></div>
 </div></section>
 
 <!-- 2. TRACK PAGE -->
 <section class="screen" id="s-track"><div class="wrap">
   <div class="track">
-    <div><div class="cover bigcover c1">GC</div>
-      <div class="kv glass"><span>프리셋</span><b>POP PRO</b><span>라우드니스</span><b>-11.0 LUFS</b><span>트루 피크</span><b>-1.0 dBTP</b><span>포맷</span><b>24-bit / 48k</b><span>올린 날</span><b>2026-09-01</b></div>
+    <div><div class="cover bigcover c9">GC</div>
+      <div class="kv glass"><span><span class="ko">프리셋</span><span class="en">Preset</span></span><b>POP PRO</b><span><span class="ko">라우드니스</span><span class="en">Loudness</span></span><b>-11.0 LUFS</b><span><span class="ko">트루 피크</span><span class="en">True peak</span></span><b>-1.0 dBTP</b><span><span class="ko">포맷</span><span class="en">Format</span></span><b>24-bit / 48k</b><span><span class="ko">올린 날</span><span class="en">Uploaded</span></span><b>2026-09-03</b></div>
+      <div class="tools"><a href="#"><span class="ko">신고</span><span class="en">Report</span></a><a href="#"><span class="ko">내 곡 삭제</span><span class="en">Delete my track</span></a></div>
     </div>
     <div>
-      <span class="kicker">#1 · 이번 주 · ↑ 2</span>
+      <span class="kicker">#7 · <span class="ko">이번 주</span><span class="en">this week</span> · NEW</span>
       <h1>Glow Connection</h1>
       <p class="by">by <b>ROS</b> · Suno v4 · 3:14</p>
       <div class="tags"><span class="chip on">POP PRO</span><span class="chip cy">AI GENERATED</span><span class="chip">K-POP</span></div>
       <div class="bigwave" id="bigwave"></div>
-      <div class="ctl"><button class="play on"><svg viewBox="0 0 16 16" fill="currentColor"><path d="M4 3l9 5-9 5z"/></svg></button><span class="plays">1:14 / 3:14 · 1,284 PLAYS</span><span style="flex:1"></span><button class="like on"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 21s-7-4.6-9.5-9C1 8.5 3 5 6.5 5c2 0 3.5 1.2 5.5 3 2-1.8 3.5-3 5.5-3C21 5 23 8.5 21.5 12c-2.5 4.4-9.5 9-9.5 9z"/></svg>412</button><button class="btn">공유</button></div>
+      <div class="ctl"><button class="play on"><svg viewBox="0 0 16 16" fill="currentColor"><path d="M4 3l9 5-9 5z"/></svg></button><span class="plays">0:00 / 3:14 · 12 PLAYS</span><span style="flex:1"></span><button class="like"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 21s-7-4.6-9.5-9C1 8.5 3 5 6.5 5c2 0 3.5 1.2 5.5 3 2-1.8 3.5-3 5.5-3C21 5 23 8.5 21.5 12c-2.5 4.4-9.5 9-9.5 9z"/></svg>3</button><button class="btn gold"><span class="ko">공유</span><span class="en">Share</span></button></div>
       <div class="share glass">
-        <div class="card"><div class="cover c1">GC</div><div><b>Glow Connection — ROS</b><span>MASTERED CHARTS · W36</span></div><em>#1</em></div>
-        <div><b style="display:block;font-size:14px">공유 카드</b><span style="font-size:12.5px;color:var(--fg3)">SNS에 올리면 이 카드가 뜨고, 링크로 들어온 사람은 바로 재생돼요. (utm 자동)</span></div>
+        <div class="card"><div class="cover c9">GC</div><div><b>Glow Connection — ROS</b><span>MASTERED CHARTS · W36</span></div><em>#7</em></div>
+        <div><b style="display:block;font-size:14px"><span class="ko">공유 카드</span><span class="en">Share card</span></b><span style="font-size:12.5px;color:var(--fg3)"><span class="ko">SNS에 올리면 이 카드가 뜨고, 링크로 들어온 사람은 바로 재생돼요. 링크에 utm 자동.</span><span class="en">This is what shows on SNS; people who land from it can play instantly. utm added automatically.</span></span></div>
       </div>
     </div>
   </div>
@@ -192,41 +209,38 @@ h1 b{font-weight:700;background:linear-gradient(90deg,var(--gold3),var(--gold2))
 <!-- 3. UPLOAD MODAL -->
 <div class="modalback" id="up" onclick="if(event.target===this)closeUp()">
   <div class="modal glass">
-    <span class="kicker">차트에 올리기</span>
-    <h2>방금 마스터링한 곡을 올릴게요</h2>
-    <p>여기서 마스터링한 파일만 올릴 수 있어요. 올리면 이번 주 차트에 바로 들어가요.</p>
-    <div class="src"><div class="cover c1">GC</div><div><b>Glow Connection — POP PRO 마스터</b><span>24-BIT WAV · -11.0 LUFS · 9.4s 렌더 · 방금</span></div><span class="chip" style="color:var(--ok);border-color:rgba(52,211,153,.4)">READY</span></div>
-    <div class="fields2"><div class="field"><label>제목</label><input value="Glow Connection"></div><div class="field"><label>아티스트명</label><input value="ROS"></div></div>
-    <div class="fields2"><div class="field"><label>장르</label><select><option>K-POP</option><option>HIPHOP</option><option>BALLAD</option><option>EDM</option><option>ROCK</option></select></div><div class="field"><label>커버</label><select><option>자동 생성 (그라데이션 + 이니셜)</option><option>이미지 업로드</option></select></div></div>
-    <label class="chk"><input type="checkbox" checked> 이 곡은 AI 로 생성한 음악이며, 올릴 권리가 나에게 있습니다.</label>
-    <label class="chk"><input type="checkbox" checked> 차트 공개에 동의합니다 (삭제는 언제든 마이페이지에서).</label>
-    <div class="row2"><button class="btn" onclick="closeUp()">취소</button><button class="btn gold" onclick="closeUp();go('track')">올리기 →</button></div>
+    <span class="kicker"><span class="ko">차트에 올리기</span><span class="en">Upload to chart</span></span>
+    <h2><span class="ko">방금 마스터링한 곡을 올릴게요</span><span class="en">Upload the master you just made</span></h2>
+    <p><span class="ko">여기서 마스터링한 파일만 올릴 수 있어요. 올리면 이번 주 차트에 바로 들어가요.</span><span class="en">Only files mastered here can be uploaded. It joins this week's chart right away.</span></p>
+    <div class="src"><div class="cover c9">GC</div><div><b>Glow Connection — POP PRO</b><span>24-BIT WAV · -11.0 LUFS · 9.4s · <span class="ko">방금</span><span class="en">just now</span></span></div><span class="chip ok">READY</span></div>
+    <div class="fields2"><div class="field"><label><span class="ko">제목</span><span class="en">Title</span></label><input value="Glow Connection"></div><div class="field"><label><span class="ko">아티스트명</span><span class="en">Artist</span></label><input value="ROS"></div></div>
+    <div class="fields2"><div class="field"><label><span class="ko">장르</span><span class="en">Genre</span></label><select><option>K-POP</option><option>HIPHOP</option><option>BALLAD</option><option>EDM</option><option>ROCK</option></select></div><div class="field"><label><span class="ko">커버</span><span class="en">Cover</span></label><select><option class="ko">자동 생성 (그라데이션 + 이니셜)</option><option>Upload image</option></select></div></div>
+    <label class="chk"><input type="checkbox" checked> <span><span class="ko">이 곡은 AI 로 생성한 음악이며, 올릴 권리가 나에게 있습니다.</span><span class="en">This is AI-generated music and I have the right to publish it.</span></span></label>
+    <label class="chk"><input type="checkbox" checked> <span><span class="ko">차트 공개에 동의합니다. 삭제는 언제든 트랙 페이지에서.</span><span class="en">I agree to publish it on the chart. Delete anytime from the track page.</span></span></label>
+    <div class="row2"><button class="btn" onclick="closeUp()"><span class="ko">취소</span><span class="en">Cancel</span></button><button class="btn gold" onclick="upload()"><span class="ko">올리기</span><span class="en">Upload</span> →</button></div>
   </div>
 </div>
 
-<!-- bottom player -->
+<div class="toast" id="toast"><i></i><span class="ko">차트에 올라갔어요 · #7 NEW</span><span class="en">On the chart · #7 NEW</span></div>
 <div class="player glass"><div class="cover c1">GC</div><div class="t"><b>Glow Connection — ROS</b><span>#1 · POP PRO · 1:14 / 3:14</span><div class="wave" id="wave"></div></div><div class="ctrl"><button class="like"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 21s-7-4.6-9.5-9C1 8.5 3 5 6.5 5c2 0 3.5 1.2 5.5 3 2-1.8 3.5-3 5.5-3C21 5 23 8.5 21.5 12c-2.5 4.4-9.5 9-9.5 9z"/></svg>412</button><button class="play on"><svg viewBox="0 0 16 16" fill="currentColor"><path d="M5 3h3v10H5zM9 3h3v10H9z"/></svg></button></div></div>
 
-<nav class="flow"><span>시안</span><button class="on" data-s="chart" onclick="go('chart')">1 차트 = 랜딩</button><button data-s="track" onclick="go('track')">2 트랙 페이지</button><button onclick="openUp()">3 올리기 팝업</button></nav>
+<nav class="flow"><span>시안 v2</span><button data-s="res" onclick="go('res')">0 스튜디오 결과</button><button class="on" data-s="chart" onclick="go('chart')">1 차트 = 랜딩</button><button data-s="track" onclick="go('track')">2 트랙 페이지</button><button onclick="openUp()">3 올리기</button></nav>
 
 <script>
-var rows=[
- ['Glow Connection','ROS','POP PRO','K-POP','3:14','1,284',412,'c1','GC','up 2'],
- ['Midnight Seoul','hana.ai','ANTI-AI','HIPHOP','2:58','1,102',388,'c2','MS','up 1'],
- ['Paper Moon','J.Ko','STEM','BALLAD','3:41','976',301,'c3','PM','dn 2'],
- ['Neon Rain','LUNA','POP PRO','EDM','3:05','842',255,'c4','NR','new'],
- ['Dear Mars','오월','CLEAN','ROCK','4:02','611',190,'c5','DM','up 4'],
- ['Static Love','BYTE','ANTI-AI','K-POP','2:47','590',171,'c6','SL','dn 1'],
- ['Slow Burn','minji','POP PRO','BALLAD','3:33','477',140,'c7','SB','new'],
- ['Afterglow','KAI','STEM','EDM','3:19','402',122,'c8','AG','up 3']];
-var chart=document.getElementById('chart');
-rows.forEach(function(r,i){var d=document.createElement('div');d.className='row'+(i===0?' top':'');var ch=r[9].split(' ');var cls=ch[0]==='new'?'new':ch[0];var txt=ch[0]==='new'?'NEW':(ch[0]==='up'?'▲ ':'▼ ')+ch[1];
- d.innerHTML='<div class="rank">'+(i+1)+'<small class="'+cls+'">'+txt+'</small></div><div class="cover '+r[7]+'">'+r[8]+'</div><div class="meta"><b>'+r[0]+'</b><span>'+r[1]+' · '+r[4]+'</span><div class="tags"><span class="chip '+(r[2]==='ANTI-AI'?'cy':r[2]==='POP PRO'?'on':'')+'">'+r[2]+'</span><span class="chip">'+r[3]+'</span></div></div><span class="plays">'+r[5]+' PLAYS</span><button class="like" onclick="this.classList.toggle(\'on\')"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 21s-7-4.6-9.5-9C1 8.5 3 5 6.5 5c2 0 3.5 1.2 5.5 3 2-1.8 3.5-3 5.5-3C21 5 23 8.5 21.5 12c-2.5 4.4-9.5 9-9.5 9z"/></svg>'+r[6]+'</button><button class="play'+(i===0?' on':'')+'" onclick="go(\'track\')"><svg viewBox="0 0 16 16" fill="currentColor"><path d="M4 3l9 5-9 5z"/></svg></button>';
- d.querySelector('.meta').onclick=function(){go('track')}; chart.appendChild(d);});
-var w=document.getElementById('wave');for(var i=0;i<28;i++){var b=document.createElement('i');b.style.height=(8+Math.abs(Math.sin(i*1.3))*22)+'px';b.style.animationDelay=(i*0.07)+'s';w.appendChild(b);}
-var bw=document.getElementById('bigwave');for(var j=0;j<90;j++){var e=document.createElement('i');e.style.height=(14+Math.abs(Math.sin(j*0.6)+Math.sin(j*0.21))*38)+'px';if(j>35)e.className='p';bw.appendChild(e);}
+var langBtn=document.getElementById('lang');function setLang(l){document.documentElement.lang=l;langBtn.textContent=l==='ko'?'EN':'KO'}langBtn.onclick=function(){setLang(document.documentElement.lang==='ko'?'en':'ko')};
+var HEART='<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 21s-7-4.6-9.5-9C1 8.5 3 5 6.5 5c2 0 3.5 1.2 5.5 3 2-1.8 3.5-3 5.5-3C21 5 23 8.5 21.5 12c-2.5 4.4-9.5 9-9.5 9z"/></svg>';
+var rows=[['Glow Connection','ROS','POP PRO','K-POP','3:14','1,284',412,'c1','GC','up 2'],['Midnight Seoul','hana.ai','ANTI-AI','HIPHOP','2:58','1,102',388,'c2','MS','up 1'],['Paper Moon','J.Ko','STEM','BALLAD','3:41','976',301,'c3','PM','dn 2'],['Neon Rain','LUNA','POP PRO','EDM','3:05','842',255,'c4','NR','new'],['Dear Mars','오월','CLEAN','ROCK','4:02','611',190,'c5','DM','up 4'],['Static Love','BYTE','ANTI-AI','K-POP','2:47','590',171,'c6','SL','dn 1'],['Slow Burn','minji','POP PRO','BALLAD','3:33','477',140,'c7','SB','new'],['Afterglow','KAI','STEM','EDM','3:19','402',122,'c8','AG','up 3']];
+var mineRow=['Glow Connection','ROS','POP PRO','K-POP','3:14','12',3,'c9','GC','new'];
+function render(withMine){var chart=document.getElementById('chart');chart.innerHTML='';var list=rows.slice();if(withMine)list.splice(6,0,mineRow);
+ list.forEach(function(r,i){var d=document.createElement('div');var isMe=withMine&&i===6;d.className='row'+(i===0?' top':'')+(isMe?' me':'');var ch=r[9].split(' ');var cls=ch[0]==='new'?'new':ch[0];var txt=ch[0]==='new'?'NEW':(ch[0]==='up'?'▲ ':'▼ ')+ch[1];
+  d.innerHTML='<div class="rank">'+(i+1)+'<small class="'+cls+'">'+txt+'</small></div><div class="cover '+r[7]+'">'+r[8]+'</div><div class="meta"><b>'+r[0]+(isMe?' <span class="chip ok" style="padding:2px 7px;font-size:9px;margin-left:6px">MY TRACK</span>':'')+'</b><span>'+r[1]+' · '+r[4]+'</span><div class="tags"><span class="chip '+(r[2]==='ANTI-AI'?'cy':r[2]==='POP PRO'?'on':'')+'">'+r[2]+'</span><span class="chip">'+r[3]+'</span></div></div><span class="plays">'+r[5]+' PLAYS</span><button class="like" onclick="this.classList.toggle(\'on\')">'+HEART+r[6]+'</button><button class="play'+(i===0?' on':'')+'" onclick="go(\'track\')"><svg viewBox="0 0 16 16" fill="currentColor"><path d="M4 3l9 5-9 5z"/></svg></button>';
+  d.querySelector('.meta').onclick=function(){go('track')};chart.appendChild(d);});}
+render(false);
+function wave(id,n,f){var w=document.getElementById(id);if(!w)return;for(var i=0;i<n;i++){var b=document.createElement('i');b.style.height=f(i)+'px';if(id==='wave')b.style.animationDelay=(i*0.07)+'s';if(id!=='wave'&&i>n*0.4)b.className='p';w.appendChild(b);}}
+wave('wave',28,function(i){return 8+Math.abs(Math.sin(i*1.3))*22});wave('bigwave',90,function(j){return 14+Math.abs(Math.sin(j*0.6)+Math.sin(j*0.21))*38});wave('bw0',90,function(j){return 14+Math.abs(Math.sin(j*0.5)+Math.sin(j*0.27))*38});
 function go(s){document.querySelectorAll('.screen').forEach(function(x){x.classList.toggle('on',x.id==='s-'+s)});document.querySelectorAll('.flow button[data-s]').forEach(function(b){b.classList.toggle('on',b.dataset.s===s)});window.scrollTo(0,0)}
 function openUp(){document.getElementById('up').classList.add('on')} function closeUp(){document.getElementById('up').classList.remove('on')}
+function upload(){closeUp();render(true);document.getElementById('mine').classList.add('on');go('chart');var t=document.getElementById('toast');t.classList.add('on');setTimeout(function(){t.classList.remove('on')},3200);setTimeout(function(){var me=document.querySelector('.row.me');if(me)me.scrollIntoView({behavior:'smooth',block:'center'})},600)}
 </script>
 </body>
 </html>
