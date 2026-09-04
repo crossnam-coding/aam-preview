@@ -4167,6 +4167,48 @@ html[lang="ko"] .q-text {
   }
 }
 
+@keyframes hb-unfold {
+  from {
+    opacity: 0;
+    transform: translateY(16px)scale(.985);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes hb-seal {
+  0%, 55% {
+    opacity: 1;
+    transform: rotate(-8deg)scale(1);
+  }
+
+  100% {
+    opacity: 0;
+    transform: rotate(-8deg)scale(1.25);
+  }
+}
+
+@keyframes hb-rise {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hb-unfold, .hb-seal, .hb-rise {
+    animation: none !important;
+  }
+}
+
 @property --tw-rotate-x {
   syntax: "*";
   inherits: false
