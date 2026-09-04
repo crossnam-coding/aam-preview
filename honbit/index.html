@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>[시안] Honbit — 홈 · 궁합 결과 · 판정카드</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css" rel="stylesheet">
+<style>
+:root{--bg:#09071a;--bg2:#0f0c22;--line:rgba(255,255,255,.09);--line2:rgba(255,255,255,.16);--fg:#fff8f4;--fg2:rgba(255,248,244,.66);--fg3:rgba(255,248,244,.42);
+--wood:#5eead4;--fire:#ff5ec0;--earth:#fbbf24;--metal:#d0d6e8;--water:#7cc4ff;--peach:#ff8e9e;--lilac:#a78bfa;
+--cta:linear-gradient(135deg,#ff8e9e,#ff5ec0);--glass:linear-gradient(180deg,rgba(255,255,255,.07),rgba(255,255,255,.03));--hi:inset 0 1px 0 rgba(255,255,255,.09);--sh:0 30px 60px -40px rgba(0,0,0,.9);
+--mono:'JetBrains Mono',ui-monospace,monospace;--disp:'Outfit','Pretendard Variable',sans-serif;--body:'Pretendard Variable','Inter',system-ui,sans-serif;--ease:cubic-bezier(.2,.7,.2,1)}
+*{box-sizing:border-box} a{color:inherit;text-decoration:none} button{font:inherit;color:inherit;cursor:pointer}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--body);font-size:15px;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+html[lang=en] body{font-family:'Inter','Pretendard Variable',system-ui,sans-serif}
+.en{display:none} html[lang=en] .en{display:inline} html[lang=en] .ko{display:none}
+body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;background:radial-gradient(60% 40% at 50% -5%,rgba(167,139,250,.22),transparent 60%),radial-gradient(35% 30% at 85% 30%,rgba(255,94,192,.10),transparent 70%),radial-gradient(35% 30% at 10% 70%,rgba(94,234,212,.07),transparent 70%)}
+body::after{content:"";position:fixed;inset:-50%;width:200%;height:200%;pointer-events:none;z-index:80;opacity:.05;mix-blend-mode:overlay;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>")}
+.top{position:sticky;top:0;z-index:40;display:flex;align-items:center;gap:20px;padding:14px clamp(16px,4vw,48px);background:rgba(9,7,26,.62);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.brand{display:flex;align-items:center;gap:10px;font-family:var(--disp);font-weight:700;font-size:16px}
+.brand i{width:26px;height:26px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#fff 0,#ff8e9e 30%,#a78bfa 70%,#09071a 100%);box-shadow:0 0 18px rgba(255,142,158,.45)}
+.nav{display:flex;gap:20px;font-weight:500;font-size:13.5px;color:var(--fg2)} .nav a.on{color:var(--fg)}
+.top .r{margin-left:auto;display:flex;gap:10px;align-items:center}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:11px 16px;border-radius:999px;border:1px solid var(--line2);background:rgba(255,255,255,.04);font-weight:600;font-size:13.5px;transition:transform .25s var(--ease),border-color .2s,box-shadow .25s;white-space:nowrap}
+.btn:hover{transform:translateY(-1px);border-color:rgba(255,255,255,.32)}
+.btn.cta{background:var(--cta);color:#1a0810;border-color:transparent;box-shadow:0 1px 0 rgba(255,255,255,.35) inset,0 12px 30px -10px rgba(255,94,192,.6)}
+.btn.big{padding:16px 24px;font-size:15.5px} .btn.ghost{background:transparent}
+.lang{font-family:var(--mono);font-size:11px;letter-spacing:.12em;padding:8px 11px}
+main{position:relative;z-index:1}
+.wrap{max-width:1040px;margin:0 auto;padding:0 clamp(16px,4vw,48px)}
+.kicker{display:inline-flex;align-items:center;gap:10px;font-family:var(--mono);font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--fg3)}
+.kicker::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--fire);box-shadow:9px 0 0 var(--wood),18px 0 0 var(--earth),27px 0 0 var(--water);margin-right:26px}
+.chip{display:inline-flex;align-items:center;gap:6px;padding:6px 11px;border-radius:999px;border:1px solid var(--line);font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--fg3);white-space:nowrap}
+.glass{border-radius:22px;border:1px solid var(--line);background:var(--glass);box-shadow:var(--hi),var(--sh);backdrop-filter:blur(10px)}
+.screen{display:none} .screen.on{display:block;animation:in .45s var(--ease)} @keyframes in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+h1{font-family:var(--disp);font-weight:700;font-size:clamp(38px,6vw,76px);letter-spacing:-.04em;line-height:1;margin:14px 0 14px}
+html[lang=ko] h1{font-weight:800;letter-spacing:-.035em}
+h1 b{background:linear-gradient(90deg,#ff8e9e,#ff5ec0 50%,#a78bfa);-webkit-background-clip:text;background-clip:text;color:transparent}
+.sub{color:var(--fg2);font-size:16.5px;margin:0 0 26px;max-width:40ch}
+
+/* ---- home ---- */
+.hero{padding:clamp(48px,8vh,84px) 0 30px;display:grid;grid-template-columns:1.05fr .95fr;gap:36px;align-items:center}
+.orb{position:relative;aspect-ratio:1;width:min(100%,420px);margin:0 auto}
+.orb .core{position:absolute;inset:18%;border-radius:50%;background:radial-gradient(circle at 38% 32%,#fff 0,#ffd6de 12%,#ff8e9e 34%,#a78bfa 62%,#2a1650 100%);box-shadow:0 0 80px 10px rgba(255,142,158,.35),0 0 160px 40px rgba(167,139,250,.25);animation:breathe 6s ease-in-out infinite}
+@keyframes breathe{0%,100%{transform:scale(1)}50%{transform:scale(1.04)}}
+.orb .ring{position:absolute;inset:0;border-radius:50%;border:1px solid var(--line2);animation:spin 40s linear infinite}
+.orb .ring i{position:absolute;width:12px;height:12px;border-radius:50%;left:50%;top:-6px;margin-left:-6px;box-shadow:0 0 14px currentColor;background:currentColor}
+.orb .ring i:nth-child(1){color:var(--wood)} .orb .ring i:nth-child(2){color:var(--fire);transform:rotate(72deg);transform-origin:50% calc(50% + 6px + 50cqw)}
+@keyframes spin{to{transform:rotate(360deg)}}
+.orb .ring2{position:absolute;inset:9%;border-radius:50%;border:1px dashed rgba(255,255,255,.12);animation:spin 70s linear infinite reverse}
+.orb .lbl{position:absolute;left:50%;bottom:6%;transform:translateX(-50%);white-space:nowrap}
+.dots{position:absolute;inset:0;border-radius:50%}
+.dots i{position:absolute;width:10px;height:10px;border-radius:50%;background:currentColor;box-shadow:0 0 14px currentColor;left:calc(50% - 5px);top:calc(50% - 5px)}
+.picker{display:grid;grid-template-columns:1.3fr 1fr auto;gap:8px;padding:8px;border-radius:18px;border:1px solid var(--line2);background:rgba(9,7,26,.6);backdrop-filter:blur(10px);box-shadow:var(--hi),var(--sh)}
+.picker input{background:rgba(255,255,255,.05);border:1px solid var(--line);border-radius:12px;padding:14px 14px;color:var(--fg);font:inherit;font-size:15px;min-width:0}
+.picker input::placeholder{color:var(--fg3)}
+.quick{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px} .quick .chip{cursor:pointer;text-transform:none;font-family:var(--body);font-size:12.5px;letter-spacing:0;color:var(--fg2)} .quick .chip:hover{border-color:var(--fire);color:var(--fg)}
+.quick .chip i{width:7px;height:7px;border-radius:50%;background:currentColor}
+.trust{margin-top:14px;font-size:12.5px;color:var(--fg3)}
+.rows{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:34px}
+.rowc{padding:16px 16px 14px;border-radius:16px;border:1px solid var(--line);background:rgba(255,255,255,.035);display:grid;gap:4px;transition:transform .3s var(--ease),border-color .2s}
+.rowc:hover{transform:translateY(-3px);border-color:var(--line2)}
+.rowc b{font-size:15px;font-weight:600} .rowc span{font-size:12.5px;color:var(--fg3)} .rowc .k{font-family:var(--mono);font-size:9.5px;letter-spacing:.16em;color:var(--fg3)}
+.live{margin-top:34px;padding:14px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.live .tk{display:flex;gap:34px;width:max-content;animation:tick 40s linear infinite;font-size:13px;color:var(--fg2);white-space:nowrap}
+.live .tk span i{display:inline-block;width:7px;height:7px;border-radius:50%;margin-right:8px;vertical-align:middle}
+@keyframes tick{to{transform:translateX(-33.333%)}}
+.posters{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:36px}
+.foot{display:flex;justify-content:space-between;align-items:center;margin-top:44px;padding:18px 0 40px;border-top:1px solid var(--line);color:var(--fg3);font-size:12.5px;flex-wrap:wrap;gap:10px} .foot a{color:var(--fg2)}
+
+/* ---- poster (판정카드, 타이포) ---- */
+.poster{aspect-ratio:4/5;border-radius:18px;position:relative;overflow:hidden;padding:18px;display:flex;flex-direction:column;justify-content:space-between;color:#160a1c;box-shadow:var(--sh),var(--hi)}
+.poster.fire{background:linear-gradient(160deg,#ffe066,#ff5ec0 55%,#7a1f6a)} .poster.water{background:linear-gradient(160deg,#c9f0ff,#7cc4ff 50%,#1c3a8a);color:#0b1230} .poster.wood{background:linear-gradient(160deg,#e9fff7,#5eead4 50%,#0f6b5c);color:#062622}
+.poster .nm{font-family:var(--disp);font-weight:800;font-size:clamp(34px,4.2vw,58px);letter-spacing:-.05em;line-height:.9;-webkit-text-stroke:2px currentColor;color:transparent;word-break:break-all}
+.poster .nm b{-webkit-text-stroke:0;color:currentColor}
+.poster .stk{display:flex;gap:6px;flex-wrap:wrap}
+.poster .stk span{padding:5px 9px;border-radius:999px;background:rgba(255,255,255,.85);color:#160a1c;font-family:var(--mono);font-size:10px;letter-spacing:.08em;font-weight:600;transform:rotate(-2deg)} .poster .stk span:nth-child(2){transform:rotate(2deg)}
+.poster .box{padding:10px 12px;border:2px solid currentColor;border-radius:10px;font-weight:700;font-size:13px;background:rgba(255,255,255,.35)}
+.poster .box small{display:block;font-family:var(--mono);font-size:9px;letter-spacing:.14em;font-weight:600;opacity:.8;margin-bottom:2px}
+.poster .url{font-family:var(--mono);font-size:9.5px;letter-spacing:.12em;opacity:.75}
+
+/* ---- result ---- */
+.res{padding:40px 0 60px;display:grid;grid-template-columns:1.1fr .9fr;gap:32px;align-items:start}
+.score{padding:26px;position:relative;overflow:hidden}
+.score .pair{display:flex;align-items:center;gap:12px;font-family:var(--disp);font-weight:600;font-size:22px;letter-spacing:-.02em}
+.score .pair .av{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;font-size:14px;font-weight:700;color:#160a1c;box-shadow:var(--hi)}
+.score .big{display:flex;align-items:flex-end;gap:16px;margin:22px 0 6px}
+.score .n{font-family:var(--disp);font-weight:800;font-size:clamp(84px,12vw,140px);letter-spacing:-.06em;line-height:.85;background:linear-gradient(180deg,#fff,#ff8e9e 60%,#ff5ec0);-webkit-background-clip:text;background-clip:text;color:transparent}
+.score .tier{padding-bottom:14px} .score .tier b{display:block;font-family:var(--disp);font-weight:700;font-size:26px;letter-spacing:-.02em} .score .tier span{font-family:var(--mono);font-size:11px;letter-spacing:.14em;color:var(--fg3)}
+.score .line{color:var(--fg2);font-size:15.5px;margin:10px 0 0;max-width:44ch}
+.els{display:grid;gap:10px;margin-top:22px}
+.el{display:grid;grid-template-columns:64px 1fr 44px;gap:12px;align-items:center;font-size:13px}
+.el i{font-style:normal;font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;color:var(--fg3)}
+.el .bar{height:8px;border-radius:999px;background:rgba(255,255,255,.07);overflow:hidden} .el .bar b{display:block;height:100%;border-radius:999px}
+.el em{font-style:normal;font-family:var(--mono);font-size:11px;text-align:right;color:var(--fg2)}
+.insights{display:grid;gap:8px;margin-top:22px}
+.ins{padding:14px 16px;border-radius:14px;border:1px solid var(--line);background:rgba(255,255,255,.03);display:grid;grid-template-columns:auto 1fr;gap:12px;align-items:start;font-size:14px;color:var(--fg2)}
+.ins i{width:8px;height:8px;border-radius:50%;margin-top:7px;box-shadow:0 0 10px currentColor;background:currentColor}
+.ins b{color:var(--fg);font-weight:600}
+.actions{display:grid;gap:8px;margin-top:22px} .actions .row{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.aside .poster{max-width:380px;margin:0 auto}
+.aside .hint{text-align:center;font-size:12.5px;color:var(--fg3);margin-top:12px}
+.lock{margin-top:16px;padding:14px 16px;border-radius:14px;border:1px dashed rgba(167,139,250,.5);background:rgba(167,139,250,.08);font-size:13px;color:var(--fg2)} .lock b{color:#e9dcff}
+
+/* flow bar */
+.flow{position:fixed;right:16px;bottom:16px;z-index:60;display:flex;gap:4px;padding:6px;border-radius:14px;border:1px solid var(--line2);background:rgba(9,7,26,.8);backdrop-filter:blur(12px)}
+.flow span{font-family:var(--mono);font-size:9px;letter-spacing:.14em;color:var(--fg3);padding:8px 8px}
+.flow button{border:0;background:transparent;color:var(--fg3);font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;padding:8px 11px;border-radius:9px} .flow button.on{background:rgba(255,94,192,.2);color:#ffd0ea}
+
+@media (max-width:880px){.hero{grid-template-columns:1fr;gap:18px}.orb{width:min(70vw,300px);order:-1}.picker{grid-template-columns:1fr}.rows{grid-template-columns:1fr 1fr}.posters{grid-template-columns:repeat(3,1fr);gap:8px}.res{grid-template-columns:1fr}.nav{display:none}.actions .row{grid-template-columns:1fr}h1{font-size:clamp(36px,10vw,54px)}}
+@media (max-width:480px){.posters{grid-template-columns:1fr 1fr}.poster:nth-child(3){display:none}.rows{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header class="top">
+  <a class="brand" href="#"><i></i>Honbit</a>
+  <nav class="nav"><a class="on" href="#" onclick="go('home');return false"><span class="ko">최애 궁합</span><span class="en">Idol match</span></a><a href="#"><span class="ko">사주</span><span class="en">Saju</span></a><a href="#"><span class="ko">오늘</span><span class="en">Today</span></a><a href="#">Pro</a></nav>
+  <div class="r"><button class="btn lang" id="lang">EN</button><button class="btn"><span class="ko">로그인</span><span class="en">Sign in</span></button></div>
+</header>
+
+<main>
+<!-- HOME -->
+<section class="screen on" id="s-home"><div class="wrap">
+  <div class="hero">
+    <div>
+      <span class="kicker">K-pop compatibility · Saju · MBTI</span>
+      <h1><span class="ko">당신의 <b>혼빛</b>은?</span><span class="en">What's your <b>Honbit</b>?</span></h1>
+      <p class="sub"><span class="ko">최애랑 나, 사주로 보는 케미 점수. 60초, 무료, 가입 없음.</span><span class="en">Your chemistry score with your bias, read through Korean saju. 60 seconds, free, no sign-up.</span></p>
+      <div class="picker"><input id="idol" placeholder="최애 이름 (예: 정국, 방찬, 카리나)" data-en="Your bias (e.g. Jungkook, Bang Chan, Karina)"><input placeholder="내 생년월일 · 1999-03-21" data-en="Your birthday · 1999-03-21"><button class="btn cta big" onclick="go('res')"><span class="ko">궁합 보기</span><span class="en">See match</span> →</button></div>
+      <div class="quick"><span class="chip" onclick="pick('정국')"><i style="color:var(--fire)"></i>정국 · BTS</span><span class="chip" onclick="pick('방찬')"><i style="color:var(--water)"></i>방찬 · Stray Kids</span><span class="chip" onclick="pick('카리나')"><i style="color:var(--metal)"></i>카리나 · aespa</span><span class="chip" onclick="pick('하니')"><i style="color:var(--wood)"></i>하니 · NewJeans</span><span class="chip" onclick="pick('민규')"><i style="color:var(--earth)"></i>민규 · SEVENTEEN</span></div>
+      <p class="trust"><span class="ko">무료 · 가입 없음 · 60초 · 엔터테인먼트용 · 아이돌 궁합은 계속 무료예요</span><span class="en">Free · no sign-up · 60s · for entertainment · idol match stays free</span></p>
+    </div>
+    <div class="orb"><div class="ring"></div><div class="ring2"></div><div class="core"></div><div class="dots" id="dots"></div><span class="lbl chip"><span class="ko">오행 · 목 화 토 금 수</span><span class="en">Five elements</span></span></div>
+  </div>
+
+  <div class="rows">
+    <a class="rowc" href="#"><span class="k">60S</span><b><span class="ko">내 사주</span><span class="en">My saju</span></b><span><span class="ko">생일만 넣으면 명식부터 연애운까지</span><span class="en">Birthday in, chart &amp; love luck out</span></span></a>
+    <a class="rowc" href="#"><span class="k">DAILY</span><b><span class="ko">오늘의 카드</span><span class="en">Today's card</span></b><span><span class="ko">매일 한 장, 스트릭 쌓기</span><span class="en">One card a day, keep the streak</span></span></a>
+    <a class="rowc" href="#"><span class="k">MBTI × SAJU</span><b>MBTI × <span class="ko">사주</span><span class="en">Saju</span></b><span><span class="ko">둘이 만나면 새로운 나</span><span class="en">Two lenses, one you</span></span></a>
+    <a class="rowc" href="#"><span class="k">FANS</span><b><span class="ko">팬 랭킹</span><span class="en">Fan ranking</span></b><span><span class="ko">우리 팬덤 케미 상위 100</span><span class="en">Top 100 chemistry in your fandom</span></span></a>
+  </div>
+
+  <div class="live"><div class="tk" id="tk"></div></div>
+
+  <div class="posters">
+    <div class="poster fire"><div><div class="stk"><span>S TIER</span><span>87%</span></div><div class="nm" style="margin-top:12px">JUNG<br><b>KOOK</b><br>× ME</div></div><div><div class="box"><small>VERDICT</small>불꽃이 물을 만나 김이 난다 · 밀당형</div><div class="url" style="margin-top:8px">HONBITSAJU.COM</div></div></div>
+    <div class="poster water"><div><div class="stk"><span>A TIER</span><span>74%</span></div><div class="nm" style="margin-top:12px">BANG<br><b>CHAN</b><br>× ME</div></div><div><div class="box"><small>VERDICT</small>서로를 채우는 물 · 안정형</div><div class="url" style="margin-top:8px">HONBITSAJU.COM</div></div></div>
+    <div class="poster wood"><div><div class="stk"><span>S TIER</span><span>91%</span></div><div class="nm" style="margin-top:12px">HAN<br><b>NI</b><br>× ME</div></div><div><div class="box"><small>VERDICT</small>나무가 자라는 봄 · 성장형</div><div class="url" style="margin-top:8px">HONBITSAJU.COM</div></div></div>
+  </div>
+
+  <div class="foot"><span><a href="#"><span class="ko">블로그</span><span class="en">Blog</span></a> · <a href="#"><span class="ko">도움말</span><span class="en">Help</span></a> · <a href="#">Pro</a></span><span>© Honbit · <a href="#"><span class="ko">약관</span><span class="en">Terms</span></a> · <a href="#"><span class="ko">개인정보</span><span class="en">Privacy</span></a></span></div>
+</div></section>
+
+<!-- RESULT -->
+<section class="screen" id="s-res"><div class="wrap">
+  <div class="res">
+    <div>
+      <div class="score glass">
+        <div class="pair"><span class="av" style="background:linear-gradient(135deg,#ffe066,#ff5ec0)">JK</span><span class="ko">정국 × 나</span><span class="en">Jungkook × me</span><span class="chip" style="margin-left:auto"><span class="ko">불 × 물</span><span class="en">Fire × Water</span></span></div>
+        <div class="big"><div class="n">87</div><div class="tier"><b>S TIER</b><span><span class="ko">상위 6% · 불꽃 케미</span><span class="en">Top 6% · spark chemistry</span></span></div></div>
+        <p class="line"><span class="ko">정국의 불(火)이 내 물(水)을 만나 김이 나는 조합 — 서로를 끊임없이 자극해요. 밀당이 매력, 과열만 조심.</span><span class="en">His fire meets your water and steams — you keep sparking each other. The push-and-pull is the charm; just watch the boil-over.</span></p>
+        <div class="els">
+          <div class="el"><i>WOOD</i><div class="bar"><b style="width:38%;background:var(--wood)"></b></div><em>38</em></div>
+          <div class="el"><i>FIRE</i><div class="bar"><b style="width:86%;background:var(--fire)"></b></div><em>86</em></div>
+          <div class="el"><i>EARTH</i><div class="bar"><b style="width:52%;background:var(--earth)"></b></div><em>52</em></div>
+          <div class="el"><i>METAL</i><div class="bar"><b style="width:31%;background:var(--metal)"></b></div><em>31</em></div>
+          <div class="el"><i>WATER</i><div class="bar"><b style="width:79%;background:var(--water)"></b></div><em>79</em></div>
+        </div>
+        <div class="insights">
+          <div class="ins"><i style="color:var(--fire)"></i><span><b><span class="ko">끌림</span><span class="en">Pull</span></b> · <span class="ko">첫인상은 강하게, 오래가는 건 대화.</span><span class="en">Strong first impression; conversation is what lasts.</span></span></div>
+          <div class="ins"><i style="color:var(--water)"></i><span><b><span class="ko">주의</span><span class="en">Watch</span></b> · <span class="ko">둘 다 불붙으면 식히는 쪽이 없어요.</span><span class="en">When you both flare up, nobody cools it down.</span></span></div>
+          <div class="ins"><i style="color:var(--earth)"></i><span><b><span class="ko">오늘</span><span class="en">Today</span></b> · <span class="ko">토(土)가 들어오는 날 — 약속 잡기 좋은 날.</span><span class="en">Earth day — a good day to make plans.</span></span></div>
+        </div>
+        <div class="actions"><button class="btn cta big" onclick="go('card')"><span class="ko">판정카드 공유하기</span><span class="en">Share my verdict card</span> →</button><div class="row"><button class="btn"><span class="ko">팬보드에 남기기</span><span class="en">Post to fan board</span></button><button class="btn ghost" onclick="go('home')"><span class="ko">다른 최애로</span><span class="en">Try another bias</span></button></div></div>
+        <div class="lock"><b>Pro</b> · <span class="ko">내 명식 자리별 풀이·인생 시간표 16구간은 커플 Pro 에서 — 아이돌 궁합은 계속 무료.</span><span class="en">Position-by-position reading &amp; 16-phase life timeline live in Couple Pro — idol match stays free.</span></div>
+      </div>
+    </div>
+    <aside class="aside">
+      <div class="poster fire"><div><div class="stk"><span>S TIER</span><span>87%</span><span>FIRE × WATER</span></div><div class="nm" style="margin-top:14px">JUNG<br><b>KOOK</b><br>× ME</div></div><div><div class="box"><small>VERDICT</small><span class="ko">불꽃이 물을 만나 김이 난다 · 밀당형</span><span class="en">Fire meets water and steams · push-and-pull</span></div><div class="url" style="margin-top:8px">HONBITSAJU.COM/KO/IDOL-MATCH/JUNGKOOK</div></div></div>
+      <p class="hint"><span class="ko">공유 카드 미리보기 — 아이돌 사진 없이 타이포 포스터, 색은 지배 오행(불)</span><span class="en">Share-card preview — typographic poster, no idol photo, colour = dominant element (fire)</span></p>
+    </aside>
+  </div>
+</div></section>
+
+<!-- CARD -->
+<section class="screen" id="s-card"><div class="wrap">
+  <div style="padding:40px 0 60px;display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:start" class="cardgrid">
+    <div><span class="kicker"><span class="ko">판정카드 · 공유</span><span class="en">Verdict card · share</span></span>
+      <h1 style="font-size:clamp(34px,4.6vw,56px)"><span class="ko">내 카드,<br><b>내 스토리에.</b></span><span class="en">Your card,<br><b>your story.</b></span></h1>
+      <p class="sub"><span class="ko">인스타 스토리·스레드·X 에 바로. 링크로 들어온 친구는 착지한 자리에서 자기 궁합을 봐요.</span><span class="en">Straight to IG Stories, Threads or X. Friends who land from it get their own match right there.</span></p>
+      <div class="actions"><button class="btn cta big"><span class="ko">이미지 저장</span><span class="en">Save image</span></button><div class="row"><button class="btn"><span class="ko">링크 복사</span><span class="en">Copy link</span></button><button class="btn"><span class="ko">스토리 포맷 9:16</span><span class="en">Story format 9:16</span></button></div></div>
+      <div class="rows" style="grid-template-columns:1fr 1fr;margin-top:22px"><div class="rowc"><span class="k">FORMAT</span><b>4:5 · 9:16 · 1:1</b><span><span class="ko">플랫폼별 자동</span><span class="en">Auto per platform</span></span></div><div class="rowc"><span class="k">COLOUR</span><b><span class="ko">지배 오행</span><span class="en">Dominant element</span></b><span><span class="ko">불=핑크/옐로, 물=딥블루, 목=민트…</span><span class="en">fire=pink/yellow, water=deep blue, wood=mint…</span></span></div></div>
+    </div>
+    <div><div class="poster fire" style="max-width:420px;margin:0 auto;aspect-ratio:9/16"><div><div class="stk"><span>S TIER</span><span>87%</span><span>FIRE × WATER</span></div><div class="nm" style="margin-top:18px;font-size:clamp(48px,6vw,84px)">JUNG<br><b>KOOK</b><br>× ME</div></div><div><div class="box"><small>VERDICT</small><span class="ko">불꽃이 물을 만나 김이 난다 · 밀당형 · 상위 6%</span><span class="en">Fire meets water and steams · push-and-pull · top 6%</span></div><div class="url" style="margin-top:10px">HONBITSAJU.COM</div></div></div></div>
+  </div>
+</div></section>
+</main>
+
+<nav class="flow"><span>시안</span><button class="on" data-s="home" onclick="go('home')">1 홈</button><button data-s="res" onclick="go('res')">2 궁합 결과</button><button data-s="card" onclick="go('card')">3 판정카드</button></nav>
+
+<script>
+var langBtn=document.getElementById('lang');function setLang(l){document.documentElement.lang=l;langBtn.textContent=l==='ko'?'EN':'KO';document.querySelectorAll('input[data-en]').forEach(function(i){if(!i.dataset.ko)i.dataset.ko=i.placeholder;i.placeholder=l==='en'?i.dataset.en:i.dataset.ko})}langBtn.onclick=function(){setLang(document.documentElement.lang==='ko'?'en':'ko')};
+function go(s){document.querySelectorAll('.screen').forEach(function(x){x.classList.toggle('on',x.id==='s-'+s)});document.querySelectorAll('.flow button[data-s]').forEach(function(b){b.classList.toggle('on',b.dataset.s===s)});window.scrollTo(0,0)}
+function pick(n){document.getElementById('idol').value=n}
+// element dots orbiting the orb
+var dots=document.getElementById('dots'),cols=['#5eead4','#ff5ec0','#fbbf24','#d0d6e8','#7cc4ff'];cols.forEach(function(c,i){var d=document.createElement('i');d.style.color=c;dots.appendChild(d)});
+(function(){var t0=performance.now();function f(now){var t=(now-t0)/1000;var els=dots.children;var R=dots.clientWidth/2;for(var i=0;i<els.length;i++){var a=t*0.25+i*(Math.PI*2/5);els[i].style.transform='translate('+(Math.cos(a)*R*0.98)+'px,'+(Math.sin(a)*R*0.98)+'px)'}requestAnimationFrame(f)}requestAnimationFrame(f)})();
+// live ticker
+var items=[['정국 × 물','var(--fire)'],['방찬 × 불','var(--water)'],['카리나 × 목','var(--metal)'],['하니 × 화','var(--wood)'],['민규 × 수','var(--earth)'],['유진 × 토','var(--fire)'],['제니 × 금','var(--fire)'],['필릭스 × 목','var(--water)']];
+var tk=document.getElementById('tk'),html='';for(var r=0;r<3;r++)items.forEach(function(it){html+='<span><i style="background:'+it[1]+'"></i>'+it[0]+' · <b style="color:var(--fg)">'+(70+Math.floor(Math.random()*25))+'%</b></span>'});tk.innerHTML=html;
+</script>
+</body>
+</html>
