@@ -74,7 +74,7 @@ h1 b{background:linear-gradient(90deg,#ff8e9e,#ff5ec0 50%,#a78bfa);-webkit-backg
 /* ---- poster (판정카드, 타이포) ---- */
 .poster{--ink:#160a1c;aspect-ratio:4/5;border-radius:18px;position:relative;overflow:hidden;padding:18px;display:flex;flex-direction:column;justify-content:space-between;color:var(--ink);box-shadow:var(--sh),var(--hi)}
 .poster.fire{background:linear-gradient(160deg,#ffe066,#ff5ec0 55%,#7a1f6a)} .poster.water{background:linear-gradient(160deg,#c9f0ff,#7cc4ff 50%,#1c3a8a);--ink:#0b1230} .poster.wood{background:linear-gradient(160deg,#e9fff7,#5eead4 50%,#0f6b5c);--ink:#062622}
-.poster .nm{font-family:var(--disp);font-weight:800;font-size:clamp(34px,4.2vw,58px);letter-spacing:-.05em;line-height:.9;-webkit-text-stroke:2px var(--ink);color:transparent;word-break:break-all}
+.poster .nm{font-family:var(--disp);font-weight:800;font-size:clamp(34px,4.2vw,58px);letter-spacing:-.05em;line-height:.9;-webkit-text-stroke:2px var(--ink);color:transparent;word-break:keep-all;overflow-wrap:normal}
 .poster .nm b{-webkit-text-stroke:0;color:var(--ink)}
 .poster .stk{display:flex;gap:6px;flex-wrap:wrap}
 .poster .stk span{padding:5px 9px;border-radius:999px;background:rgba(255,255,255,.85);color:#160a1c;font-family:var(--mono);font-size:10px;letter-spacing:.08em;font-weight:600;transform:rotate(-2deg)} .poster .stk span:nth-child(2){transform:rotate(2deg)}
@@ -111,7 +111,7 @@ h1 b{background:linear-gradient(90deg,#ff8e9e,#ff5ec0 50%,#a78bfa);-webkit-backg
 .flow button{border:0;background:transparent;color:var(--fg3);font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;padding:8px 11px;border-radius:9px} .flow button.on{background:rgba(255,94,192,.2);color:#ffd0ea}
 
 @media (max-width:880px){.flow{bottom:auto;top:66px;right:8px;left:8px;justify-content:center}.hero{grid-template-columns:1fr;gap:18px}.orb{width:min(70vw,300px);order:-1}.picker{grid-template-columns:1fr}.rows{grid-template-columns:1fr 1fr}.posters{grid-template-columns:repeat(3,1fr);gap:8px}.res{grid-template-columns:1fr}.nav{display:none}.actions .row{grid-template-columns:1fr}h1{font-size:clamp(36px,10vw,54px)}}
-@media (max-width:480px){.posters{grid-template-columns:1fr 1fr}.poster:nth-child(3){display:none}.rows{grid-template-columns:1fr}}
+@media (max-width:480px){.posters{grid-template-columns:1fr 1fr}.poster:nth-child(3){display:none}.rows{grid-template-columns:1fr}.cardgrid{grid-template-columns:1fr !important}.cardgrid .poster{max-width:300px !important;aspect-ratio:4/5 !important}.cardgrid .poster .nm{font-size:clamp(34px,11vw,44px) !important}.cardgrid .rows{grid-template-columns:1fr !important}.poster .nm{font-size:clamp(26px,8vw,40px)}}
 </style>
 </head>
 <body>
