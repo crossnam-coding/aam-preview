@@ -4,234 +4,204 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
-<title>[시안 v2] Honbit — 홈 · 궁합 결과 · 판정카드</title>
+<title>[시안 v4] Honbit — 매일 도착하는 사주 이야기</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css" rel="stylesheet">
 <style>
-:root{--bg:#09071a;--line:rgba(255,255,255,.09);--line2:rgba(255,255,255,.16);--fg:#fff8f4;--fg2:rgba(255,248,244,.66);--fg3:rgba(255,248,244,.42);
---wood:#5eead4;--fire:#ff5ec0;--earth:#fbbf24;--metal:#d0d6e8;--water:#7cc4ff;--peach:#ff8e9e;--lilac:#a78bfa;
---cta:linear-gradient(135deg,#ff8e9e,#ff5ec0);--glass:linear-gradient(180deg,rgba(255,255,255,.07),rgba(255,255,255,.03));--hi:inset 0 1px 0 rgba(255,255,255,.09);--sh:0 30px 60px -40px rgba(0,0,0,.9);
---mono:'JetBrains Mono',ui-monospace,monospace;--disp:'Outfit','Pretendard Variable',sans-serif;--body:'Pretendard Variable','Inter',system-ui,sans-serif;--ease:cubic-bezier(.2,.7,.2,1)}
+:root{--bg:#07060f;--fg:#f4f1ff;--fg2:rgba(244,241,255,.64);--fg3:rgba(244,241,255,.4);--line:rgba(244,241,255,.10);--paper:#fbf7ff;--ink:#1b1430;--ink2:#5a4f78;
+--acc:#8ad8ff;--acc2:#b9a7ff;--pink:#ff7bc4;--wood:#5eead4;--fire:#ff5ec0;--earth:#fbbf24;--metal:#d0d6e8;--water:#7cc4ff;
+--disp:'Outfit','Pretendard Variable',sans-serif;--body:'Pretendard Variable','Inter',system-ui,sans-serif;--ease:cubic-bezier(.2,.7,.2,1)}
 *{box-sizing:border-box} a{color:inherit;text-decoration:none} button{font:inherit;color:inherit;cursor:pointer}
-body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--body);font-size:15px;line-height:1.5;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--body);font-size:15px;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 html[lang=en] body{font-family:'Inter','Pretendard Variable',system-ui,sans-serif}
-.en{display:none} html[lang=en] .en{display:inline} html[lang=en] .ko{display:none}
-body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;background:radial-gradient(55% 40% at 62% 20%,rgba(167,139,250,.20),transparent 60%),radial-gradient(35% 30% at 85% 60%,rgba(255,94,192,.10),transparent 70%),radial-gradient(35% 30% at 10% 80%,rgba(94,234,212,.06),transparent 70%)}
-body::after{content:"";position:fixed;inset:-50%;width:200%;height:200%;pointer-events:none;z-index:80;opacity:.05;mix-blend-mode:overlay;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>")}
-.top{position:sticky;top:0;z-index:40;display:flex;align-items:center;gap:20px;padding:12px clamp(16px,4vw,48px);background:rgba(9,7,26,.62);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
-.brand{display:flex;align-items:center;gap:10px;font-family:var(--disp);font-weight:700;font-size:16px}
-.brand i{width:26px;height:26px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#fff 0,#ff8e9e 30%,#a78bfa 70%,#09071a 100%);box-shadow:0 0 18px rgba(255,142,158,.45)}
-.nav{display:flex;gap:18px;font-weight:500;font-size:13.5px;color:var(--fg2)} .nav a.on{color:var(--fg)}
-.top .r{margin-left:auto;display:flex;gap:8px;align-items:center}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:10px 15px;border-radius:999px;border:1px solid var(--line2);background:rgba(255,255,255,.04);font-weight:600;font-size:13.5px;transition:transform .25s var(--ease),border-color .2s,box-shadow .25s;white-space:nowrap}
-.btn:hover{transform:translateY(-1px);border-color:rgba(255,255,255,.32)}
-.btn.cta{background:var(--cta);color:#1a0810;border-color:transparent;box-shadow:0 1px 0 rgba(255,255,255,.35) inset,0 12px 30px -10px rgba(255,94,192,.6)}
-.btn.big{padding:14px 22px;font-size:15px} .btn.ghost{background:transparent}
-.lang{font-family:var(--mono);font-size:11px;letter-spacing:.12em;padding:8px 11px}
+html[lang=ko] .en{display:none!important} html[lang=en] .ko{display:none!important}
+body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;background:radial-gradient(50% 60% at 80% 40%,rgba(120,170,255,.16),transparent 60%),radial-gradient(40% 40% at 15% 100%,rgba(185,167,255,.10),transparent 70%)}
+.top{position:sticky;top:0;z-index:40;display:flex;align-items:center;gap:26px;padding:16px clamp(18px,4vw,56px);background:linear-gradient(180deg,rgba(7,6,15,.92),rgba(7,6,15,0))}
+.brand{font-family:var(--disp);font-weight:600;font-size:17px;display:flex;align-items:center;gap:9px} .brand i{width:10px;height:10px;border-radius:50%;background:var(--acc);box-shadow:0 0 16px var(--acc)}
+.nav{display:flex;gap:22px;font-size:13.5px;color:var(--fg2)} .nav a.on{color:var(--fg)}
+.top .r{margin-left:auto;display:flex;gap:6px;align-items:center}
+.lnk{font-size:13px;color:var(--fg2);padding:8px 10px;background:transparent;border:0} .lnk:hover{color:var(--fg)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:12px 18px;border-radius:999px;border:1px solid rgba(244,241,255,.18);background:transparent;font-weight:600;font-size:14px;transition:transform .25s var(--ease),background .2s,border-color .2s;white-space:nowrap}
+.btn:hover{transform:translateY(-1px);border-color:rgba(244,241,255,.4)}
+.btn.solid{background:var(--fg);color:#0b0a16;border-color:transparent} .btn.solid:hover{background:#fff}
+.btn.acc{background:var(--acc);color:#07131c;border-color:transparent}
+.btn.big{padding:15px 24px;font-size:15px}
 main{position:relative;z-index:1}
-.wrap{max-width:1000px;margin:0 auto;padding:0 clamp(16px,4vw,40px)}
-.kicker{display:inline-flex;align-items:center;font-family:var(--mono);font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--fg3)}
-.kicker::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--fire);box-shadow:9px 0 0 var(--wood),18px 0 0 var(--earth),27px 0 0 var(--water);margin-right:36px}
-.chip{display:inline-flex;align-items:center;gap:6px;padding:5px 10px;border-radius:999px;border:1px solid var(--line);font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--fg3);white-space:nowrap;background:rgba(9,7,26,.5)}
-.glass{border-radius:20px;border:1px solid var(--line);background:var(--glass);box-shadow:var(--hi),var(--sh);backdrop-filter:blur(10px)}
-.screen{display:none} .screen.on{display:block;animation:in .45s var(--ease)} @keyframes in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
-h1{font-family:var(--disp);font-weight:700;font-size:clamp(36px,5vw,62px);letter-spacing:-.04em;line-height:1;margin:12px 0 12px}
-html[lang=ko] h1{font-weight:800;letter-spacing:-.035em}
-h1 b{background:linear-gradient(90deg,#ff8e9e,#ff5ec0 50%,#a78bfa);-webkit-background-clip:text;background-clip:text;color:transparent}
-.sub{color:var(--fg2);font-size:15.5px;margin:0 0 18px;max-width:36ch}
+.wrap{max-width:1120px;margin:0 auto;padding:0 clamp(18px,4vw,56px)}
+.screen{display:none} .screen.on{display:block;animation:in .5s var(--ease)} @keyframes in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.eyebrow{font-size:12.5px;letter-spacing:.06em;color:var(--fg3);text-transform:uppercase;font-weight:500}
+h1{font-family:var(--disp);font-weight:600;font-size:clamp(40px,5.6vw,72px);letter-spacing:-.045em;line-height:1;margin:14px 0 18px}
+html[lang=ko] h1{font-weight:700;letter-spacing:-.04em}
+h1 em{font-style:normal;color:var(--acc)}
+.sub{color:var(--fg2);font-size:17px;line-height:1.55;margin:0 0 28px;max-width:36ch}
 
-/* ---- home ---- */
-.hero{padding:clamp(36px,6vh,64px) 0 26px;display:grid;grid-template-columns:440px 1fr;gap:40px;align-items:center}
-.picker{display:grid;gap:8px;padding:12px;border-radius:18px;border:1px solid var(--line2);background:rgba(9,7,26,.6);backdrop-filter:blur(10px);box-shadow:var(--hi),var(--sh);max-width:440px}
-.picker label{font-family:var(--mono);font-size:9.5px;letter-spacing:.16em;color:var(--fg3);text-transform:uppercase;display:block;margin:0 0 4px 4px}
-.picker .f2{display:grid;grid-template-columns:1.2fr 1fr;gap:8px}
-.picker input{width:100%;background:rgba(255,255,255,.05);border:1px solid var(--line);border-radius:12px;padding:12px 12px;color:var(--fg);font:inherit;font-size:14.5px;min-width:0}
-.picker input::placeholder{color:var(--fg3)}
-.quick{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px;max-width:440px} .quick .chip{cursor:pointer;text-transform:none;font-family:var(--body);font-size:12px;letter-spacing:0;color:var(--fg2);padding:5px 9px} .quick .chip:hover{border-color:var(--fire);color:var(--fg)}
-.quick .chip i{width:6px;height:6px;border-radius:50%;background:currentColor}
-.trust{margin-top:10px;font-size:12px;color:var(--fg3)}
-/* character stage */
-.stage{position:relative;width:min(100%,460px);margin:0 auto;aspect-ratio:4/5}
-.stage .halo{position:absolute;inset:8% 6% 4%;border-radius:38% 38% 42% 42%/34% 34% 44% 44%;background:radial-gradient(60% 55% at 50% 40%,rgba(167,139,250,.55),rgba(255,94,192,.22) 55%,transparent 75%);filter:blur(22px);animation:breathe 7s ease-in-out infinite}
-@keyframes breathe{0%,100%{transform:scale(1);opacity:.9}50%{transform:scale(1.05);opacity:1}}
-.stage .frame{position:absolute;inset:0;border-radius:200px 200px 34px 34px;border:1px solid var(--line2);background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.015));box-shadow:var(--hi),var(--sh);overflow:hidden}
-.stage .frame::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(9,7,26,.85) 100%)}
-.stage img{position:absolute;left:50%;bottom:-2%;width:86%;transform:translateX(-50%);filter:drop-shadow(0 20px 40px rgba(0,0,0,.55))}
-.stage .ring{position:absolute;inset:-4% -4% 12%;border-radius:50%;border:1px dashed rgba(255,255,255,.14);animation:spin 60s linear infinite;pointer-events:none}
-@keyframes spin{to{transform:rotate(360deg)}}
-.stage .dots{position:absolute;inset:-4% -4% 12%;pointer-events:none} .stage .dots i{position:absolute;left:calc(50% - 5px);top:calc(50% - 5px);width:10px;height:10px;border-radius:50%;background:currentColor;box-shadow:0 0 14px currentColor}
-.stage .tag{position:absolute;z-index:2} .stage .tag.a{left:6%;top:34%} .stage .tag.b{right:5%;top:20%} .stage .tag.c{right:8%;bottom:22%}
-.stage .who{position:absolute;left:50%;bottom:14px;transform:translateX(-50%);z-index:2;display:inline-flex;padding:3px;border-radius:999px;border:1px solid var(--line2);background:rgba(9,7,26,.7);backdrop-filter:blur(8px)}
-.stage .who button{border:0;background:transparent;color:var(--fg3);font-family:var(--body);font-weight:600;font-size:12px;padding:7px 12px;border-radius:999px}
-.stage .who button.on{background:rgba(255,142,158,.22);color:#ffd0ea}
-.rows{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:26px}
-.rowc{padding:14px 14px 12px;border-radius:16px;border:1px solid var(--line);background:rgba(255,255,255,.035);display:grid;grid-template-columns:38px 1fr;gap:10px;align-items:center;transition:transform .3s var(--ease),border-color .2s}
-.rowc:hover{transform:translateY(-3px);border-color:var(--line2)}
-.rowc .ic{width:38px;height:38px;border-radius:11px;display:grid;place-items:center;border:1px solid var(--line2);font-family:var(--mono);font-size:10px;letter-spacing:.06em}
-.rowc b{display:block;font-size:14px;font-weight:600} .rowc span{font-size:12px;color:var(--fg3);display:block}
-.live{margin-top:26px;padding:12px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
-.live .tk{display:flex;gap:30px;width:max-content;animation:tick 40s linear infinite;font-size:13px;color:var(--fg2);white-space:nowrap}
-.live .tk span i{display:inline-block;width:7px;height:7px;border-radius:50%;margin-right:8px;vertical-align:middle}
-@keyframes tick{to{transform:translateX(-33.333%)}}
-.posters{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:26px}
-.foot{display:flex;justify-content:space-between;align-items:center;margin-top:36px;padding:16px 0 40px;border-top:1px solid var(--line);color:var(--fg3);font-size:12.5px;flex-wrap:wrap;gap:10px} .foot a{color:var(--fg2)}
+/* ---- 1. home ---- */
+.hero{position:relative;min-height:calc(100vh - 70px);display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);align-items:center}
+.hero .copy{position:relative;z-index:2;padding:30px 0 60px}
+.hero .art{position:relative;height:100%;min-height:560px}
+.hero .art img{position:absolute;right:-4%;bottom:0;height:min(90vh,740px);max-width:none;filter:drop-shadow(0 30px 60px rgba(0,0,0,.6))}
+.hero .art::before{content:"";position:absolute;right:10%;bottom:10%;width:66%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,rgba(138,216,255,.35),rgba(185,167,255,.12) 45%,transparent 70%);filter:blur(30px)}
+.hero .art::after{content:"";position:absolute;inset:auto 0 0 0;height:30%;background:linear-gradient(180deg,transparent,var(--bg))}
+/* the letter floating next to the character */
+.envelope{position:absolute;left:-3%;bottom:14%;z-index:3;width:250px;padding:14px 16px;border-radius:14px;background:var(--paper);color:var(--ink);box-shadow:0 30px 60px -20px rgba(0,0,0,.7),0 0 0 1px rgba(255,255,255,.4) inset;transform:rotate(-4deg);animation:float 6s ease-in-out infinite}
+@keyframes float{0%,100%{transform:rotate(-4deg) translateY(0)}50%{transform:rotate(-3deg) translateY(-8px)}}
+.envelope .from{font-size:11px;letter-spacing:.06em;color:var(--ink2);text-transform:uppercase;display:flex;justify-content:space-between}
+.envelope .from b{color:var(--ink);font-weight:600;letter-spacing:0;text-transform:none}
+.envelope p{margin:8px 0 0;font-size:13.5px;line-height:1.5;color:var(--ink)}
+.envelope .seal{position:absolute;right:-10px;top:-10px;width:34px;height:34px;border-radius:50%;background:var(--pink);box-shadow:0 8px 20px -6px rgba(255,123,196,.8);display:grid;place-items:center;color:#fff;font-size:12px;font-weight:700;font-family:var(--disp)}
+.form{display:grid;grid-template-columns:1fr 1fr;gap:10px;max-width:460px}
+.fld{border-bottom:1px solid rgba(244,241,255,.22);padding:8px 0 10px} .fld label{display:block;font-size:11.5px;letter-spacing:.06em;color:var(--fg3);text-transform:uppercase;margin-bottom:4px}
+.fld input{width:100%;background:transparent;border:0;outline:0;color:var(--fg);font:inherit;font-size:17px;padding:2px 0} .fld input::placeholder{color:var(--fg3)}
+.form .btn{grid-column:1/-1;margin-top:10px;justify-self:start}
+.note{margin-top:22px;font-size:13px;color:var(--fg3);display:grid;gap:4px}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid var(--line);margin-top:0}
+.step{padding:26px 26px 26px 0;border-right:1px solid var(--line)} .step:last-child{border-right:0;padding-left:26px} .step:nth-child(2){padding-left:26px}
+.step .k{font-family:var(--disp);font-weight:600;color:var(--acc);font-size:13px;letter-spacing:.06em;margin-bottom:8px}
+.step b{display:block;font-family:var(--disp);font-weight:600;font-size:18px;letter-spacing:-.02em;margin-bottom:6px} .step span{color:var(--fg2);font-size:14px}
+.sec{margin-top:64px} .sec .h{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:18px} .sec .h h2{font-family:var(--disp);font-weight:600;font-size:24px;letter-spacing:-.03em;margin:0} .sec .h a{font-size:13px;color:var(--fg3)}
+.quotes{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.q{padding:22px;border-radius:18px;background:var(--paper);color:var(--ink);position:relative;box-shadow:0 30px 60px -40px rgba(0,0,0,.9);min-height:180px;display:flex;flex-direction:column;justify-content:space-between}
+.q .t{font-family:var(--disp);font-weight:600;font-size:12px;letter-spacing:.06em;color:var(--ink2);text-transform:uppercase} .q p{font-size:17px;line-height:1.45;margin:10px 0 14px;font-weight:600;letter-spacing:-.01em} .q .m{font-size:12px;color:var(--ink2);display:flex;justify-content:space-between}
+.q.fire{background:linear-gradient(160deg,#fff1e0,#ffd6ea)} .q.water{background:linear-gradient(160deg,#eef8ff,#dbe9ff)} .q.wood{background:linear-gradient(160deg,#eefff9,#d6f5ec)}
+.foot{display:flex;justify-content:space-between;align-items:center;margin-top:56px;padding:18px 0 44px;border-top:1px solid var(--line);color:var(--fg3);font-size:12.5px;flex-wrap:wrap;gap:10px} .foot a{color:var(--fg2)}
 
-/* ---- poster ---- */
-.poster{--ink:#160a1c;aspect-ratio:4/5;border-radius:18px;position:relative;overflow:hidden;padding:16px;display:flex;flex-direction:column;justify-content:space-between;color:var(--ink);box-shadow:var(--sh),var(--hi)}
-.poster.fire{background:linear-gradient(160deg,#ffe066,#ff5ec0 55%,#7a1f6a)} .poster.water{background:linear-gradient(160deg,#c9f0ff,#7cc4ff 50%,#1c3a8a);--ink:#0b1230} .poster.wood{background:linear-gradient(160deg,#e9fff7,#5eead4 50%,#0f6b5c);--ink:#062622}
-.poster .nm{font-family:var(--disp);font-weight:800;font-size:clamp(30px,3.6vw,52px);letter-spacing:-.05em;line-height:.9;-webkit-text-stroke:2px var(--ink);color:transparent;word-break:keep-all}
-.poster .nm b{-webkit-text-stroke:0;color:var(--ink)}
-.poster .stk{display:flex;gap:6px;flex-wrap:wrap} .poster .stk span{padding:4px 8px;border-radius:999px;background:rgba(255,255,255,.85);color:#160a1c;font-family:var(--mono);font-size:9.5px;letter-spacing:.08em;font-weight:600;transform:rotate(-2deg)} .poster .stk span:nth-child(2){transform:rotate(2deg)}
-.poster .box{padding:9px 11px;border:2px solid currentColor;border-radius:10px;font-weight:700;font-size:12.5px;background:rgba(255,255,255,.35)} .poster .box small{display:block;font-family:var(--mono);font-size:8.5px;letter-spacing:.14em;font-weight:600;opacity:.8;margin-bottom:2px}
-.poster .url{font-family:var(--mono);font-size:9px;letter-spacing:.12em;opacity:.75;margin-top:6px}
+/* ---- 2. episode ---- */
+.ep{padding:36px 0 70px;display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:48px;align-items:start}
+.letter{background:var(--paper);color:var(--ink);border-radius:22px;padding:34px 36px;box-shadow:0 40px 80px -40px rgba(0,0,0,.9);position:relative;overflow:hidden}
+.letter .head{display:flex;align-items:center;justify-content:space-between;gap:12px;font-size:12.5px;color:var(--ink2);letter-spacing:.04em}
+.letter .head b{color:var(--ink);font-weight:600;letter-spacing:0}
+.letter h2{font-family:var(--disp);font-weight:700;font-size:clamp(26px,3.4vw,38px);letter-spacing:-.035em;line-height:1.05;margin:16px 0 6px}
+.letter .meta{display:flex;gap:10px;flex-wrap:wrap;margin:0 0 22px} .letter .meta span{font-size:12px;padding:5px 10px;border-radius:999px;background:rgba(27,20,48,.07);color:var(--ink2);font-weight:500}
+.letter .meta span.hot{background:var(--fire);color:#fff}
+.letter p{font-size:16.5px;line-height:1.75;margin:0 0 16px;letter-spacing:-.005em}
+.letter p.say{padding-left:16px;border-left:3px solid var(--acc2);font-weight:500}
+.letter .fade{position:relative;max-height:120px;overflow:hidden}
+.letter .fade::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(251,247,255,0) 0%,var(--paper) 85%)}
+.letter .gate{margin-top:6px;padding:18px 20px;border-radius:16px;background:var(--ink);color:var(--paper);display:grid;grid-template-columns:1fr auto;gap:14px;align-items:center}
+.letter .gate b{display:block;font-family:var(--disp);font-weight:600;font-size:17px;letter-spacing:-.02em;margin-bottom:3px} .letter .gate span{font-size:13px;color:rgba(251,247,255,.7)}
+.letter .gate .btn{border-color:transparent;background:var(--acc);color:#07131c;font-weight:700}
+.letter .sign{margin-top:18px;font-size:13px;color:var(--ink2);display:flex;align-items:center;gap:10px} .letter .sign img{width:28px;height:28px;border-radius:50%;object-fit:cover;object-position:50% 12%}
+.next{margin-top:14px;padding:16px 18px;border-radius:16px;border:1px solid var(--line);display:grid;grid-template-columns:auto 1fr auto;gap:14px;align-items:center;color:var(--fg2);font-size:14px}
+.next .clock{font-family:var(--disp);font-weight:600;font-size:22px;letter-spacing:-.02em;color:var(--fg)} .next b{color:var(--fg);font-weight:600}
+.side .card{padding:20px;border-radius:18px;border:1px solid var(--line);background:rgba(244,241,255,.03)}
+.side .card h4{margin:0 0 6px;font-family:var(--disp);font-weight:600;font-size:16px;letter-spacing:-.02em} .side .card p{margin:0;font-size:13.5px;color:var(--fg2)}
+.side .pro{margin-top:14px;padding:20px;border-radius:18px;background:linear-gradient(160deg,rgba(185,167,255,.18),rgba(138,216,255,.08));border:1px solid rgba(185,167,255,.35)}
+.side .pro .p{font-family:var(--disp);font-weight:600;font-size:28px;letter-spacing:-.03em;margin:8px 0 2px} .side .pro .p small{font-size:13px;color:var(--fg2);font-weight:500;letter-spacing:0;margin-left:6px}
+.side .pro ul{margin:12px 0 16px;padding:0;list-style:none;display:grid;gap:8px;font-size:13.5px;color:var(--fg2)} .side .pro li::before{content:"·";color:var(--acc2);margin-right:8px;font-weight:700}
+.side .pro .free{font-size:12px;color:var(--fg3);margin-top:10px}
+.quote{margin-top:14px;padding:18px;border-radius:16px;background:linear-gradient(160deg,#fff1e0,#ffd6ea);color:var(--ink)} .quote .t{font-size:11px;letter-spacing:.08em;color:var(--ink2);text-transform:uppercase;font-weight:600} .quote p{font-family:var(--disp);font-weight:600;font-size:18px;line-height:1.35;margin:8px 0 12px;letter-spacing:-.01em} .quote .btn{border-color:rgba(27,20,48,.2);color:var(--ink);padding:9px 14px;font-size:13px}
 
-/* ---- result (dense) ---- */
-.res{padding:28px 0 60px;display:grid;grid-template-columns:1fr 340px;gap:22px;align-items:start}
-.score{padding:22px}
-.score .head{display:flex;align-items:center;gap:12px;font-family:var(--disp);font-weight:600;font-size:20px;letter-spacing:-.02em}
-.score .head .av{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;font-size:13px;font-weight:700;color:#160a1c;box-shadow:var(--hi)}
-.score .head .mini{width:42px;height:42px;border-radius:50%;overflow:hidden;border:1px solid var(--line2);background:#1a1230} .score .head .mini img{width:100%;height:100%;object-fit:cover;object-position:50% 12%}
-.two{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px;align-items:stretch}
-.bigbox{padding:16px 18px;border-radius:16px;border:1px solid var(--line);background:rgba(255,255,255,.03);display:flex;flex-direction:column;justify-content:space-between}
-.bigbox .n{font-family:var(--disp);font-weight:800;font-size:clamp(72px,9vw,108px);letter-spacing:-.06em;line-height:.85;background:linear-gradient(180deg,#fff,#ff8e9e 60%,#ff5ec0);-webkit-background-clip:text;background-clip:text;color:transparent}
-.bigbox .t b{display:block;font-family:var(--disp);font-weight:700;font-size:22px;letter-spacing:-.02em;margin-top:8px} .bigbox .t span{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;color:var(--fg3)}
-.cols{padding:16px 18px 12px;border-radius:16px;border:1px solid var(--line);background:rgba(255,255,255,.03);display:grid;grid-template-columns:repeat(5,1fr);gap:8px;align-items:end;height:100%}
-.col{display:grid;grid-template-rows:1fr auto auto;gap:6px;height:100%;text-align:center}
-.col .bar{align-self:end;border-radius:8px 8px 4px 4px;background:rgba(255,255,255,.07);position:relative;min-height:90px;overflow:hidden}
-.col .bar b{position:absolute;left:0;right:0;bottom:0;border-radius:8px 8px 4px 4px}
-.col em{font-style:normal;font-family:var(--disp);font-weight:600;font-size:15px} .col i{font-style:normal;font-family:var(--mono);font-size:9px;letter-spacing:.14em;color:var(--fg3)}
-.line{color:var(--fg2);font-size:14.5px;margin:16px 0 0}
-.insights{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:14px}
-.ins{padding:12px 13px;border-radius:14px;border:1px solid var(--line);background:rgba(255,255,255,.03);font-size:13px;color:var(--fg2)}
-.ins b{display:flex;align-items:center;gap:7px;color:var(--fg);font-weight:600;margin-bottom:4px} .ins b i{width:7px;height:7px;border-radius:50%;background:currentColor;box-shadow:0 0 10px currentColor}
-.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px;align-items:center}
-.actions .btn.cta{min-width:240px}
-.pro{margin-top:12px;font-size:12.5px;color:var(--fg3)} .pro b{color:#e9dcff}
-.aside .poster{width:100%} .aside .hint{font-size:12px;color:var(--fg3);margin-top:8px;text-align:center}
-.aside .mate{margin-top:12px;padding:14px;display:grid;grid-template-columns:56px 1fr;gap:12px;align-items:center}
-.aside .mate .pic{width:56px;height:56px;border-radius:14px;overflow:hidden;background:#1a1230;border:1px solid var(--line2)} .aside .mate img{width:100%;height:100%;object-fit:cover;object-position:50% 10%}
-.aside .mate b{display:block;font-size:13.5px} .aside .mate span{font-size:12px;color:var(--fg3)}
+/* ---- 3. pro ---- */
+.pro2{padding:40px 0 70px;display:grid;grid-template-columns:minmax(0,1fr) 380px;gap:56px;align-items:start}
+.day{display:grid;gap:0;border-top:1px solid var(--line);max-width:560px}
+.day .row{display:grid;grid-template-columns:86px 1fr;gap:18px;padding:18px 0;border-bottom:1px solid var(--line)} .day .row .t{font-family:var(--disp);font-weight:600;color:var(--acc);font-size:14px;letter-spacing:.02em} .day .row b{display:block;font-weight:600;font-size:16px;margin-bottom:3px} .day .row span{color:var(--fg2);font-size:14px} .day .row .tag{display:inline-block;margin-left:8px;font-size:11px;padding:2px 7px;border-radius:999px;background:rgba(185,167,255,.2);color:var(--acc2);vertical-align:middle}
+.plan{padding:26px;border-radius:22px;background:linear-gradient(160deg,rgba(185,167,255,.2),rgba(138,216,255,.08));border:1px solid rgba(185,167,255,.4)}
+.plan .p{font-family:var(--disp);font-weight:600;font-size:40px;letter-spacing:-.04em;margin:6px 0 0} .plan .p small{font-size:14px;color:var(--fg2);font-weight:500;letter-spacing:0;margin-left:8px}
+.plan .p2{font-size:13px;color:var(--fg3);margin-bottom:16px}
+.plan ul{margin:0 0 18px;padding:0;list-style:none;display:grid;gap:9px;font-size:14px;color:var(--fg2)} .plan li::before{content:"·";color:var(--acc2);margin-right:8px;font-weight:700}
+.plan .fine{font-size:12px;color:var(--fg3);margin-top:12px;line-height:1.5}
 
-/* ---- card ---- */
-.cardgrid{padding:32px 0 60px;display:grid;grid-template-columns:1fr 360px;gap:32px;align-items:start}
-.cardgrid .actions{margin-top:12px}
-.cardgrid .rows{grid-template-columns:1fr 1fr;margin-top:18px;max-width:520px}
+.flow{position:fixed;right:14px;top:14px;z-index:60;display:flex;gap:2px;padding:4px;border-radius:999px;border:1px solid var(--line);background:rgba(7,6,15,.8);backdrop-filter:blur(12px)}
+.flow button{border:0;background:transparent;color:var(--fg3);font-size:11px;padding:6px 10px;border-radius:999px} .flow button.on{background:rgba(244,241,255,.12);color:var(--fg)}
 
-/* flow bar */
-.flow{position:fixed;right:16px;bottom:16px;z-index:60;display:flex;gap:4px;padding:6px;border-radius:14px;border:1px solid var(--line2);background:rgba(9,7,26,.8);backdrop-filter:blur(12px)}
-.flow span{font-family:var(--mono);font-size:9px;letter-spacing:.14em;color:var(--fg3);padding:8px 8px}
-.flow button{border:0;background:transparent;color:var(--fg3);font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;padding:8px 11px;border-radius:9px} .flow button.on{background:rgba(255,94,192,.2);color:#ffd0ea}
-
-@media (max-width:880px){.flow{bottom:auto;top:62px;right:8px;left:8px;justify-content:center}.hero{grid-template-columns:1fr;gap:14px}.stage{width:min(78vw,340px);order:-1;margin-top:44px}.picker{max-width:none}.quick{max-width:none}.rows{grid-template-columns:1fr 1fr}.res,.cardgrid{grid-template-columns:1fr}.two{grid-template-columns:1fr}.insights{grid-template-columns:1fr}.actions .btn.cta{flex:1 1 100%}.nav{display:none}h1{font-size:clamp(34px,9.5vw,50px)}.cols{min-height:180px}}
-@media (max-width:480px){.posters{grid-template-columns:1fr 1fr}.poster:nth-child(3){display:none}.rows{grid-template-columns:1fr}.cardgrid .rows{grid-template-columns:1fr}.aside .poster{max-width:320px;margin:0 auto}}
+@media (max-width:900px){.hero{grid-template-columns:1fr;min-height:0}.hero .art{min-height:400px;order:-1;margin:0 -6vw}.hero .art img{right:50%;transform:translateX(50%);height:420px}.hero .copy{padding:8px 0 40px}.envelope{left:4vw;top:auto;bottom:6%;width:210px}.next{grid-template-columns:auto 1fr}.next .btn{grid-column:1/-1;justify-self:stretch}.next .clock{font-size:18px}.steps{grid-template-columns:1fr}.step{border-right:0;border-bottom:1px solid var(--line);padding:18px 0!important}.quotes{grid-template-columns:1fr}.ep,.pro2{grid-template-columns:1fr;gap:26px}.letter{padding:24px 22px}.letter .gate{grid-template-columns:1fr}.nav{display:none}.flow{top:auto;bottom:14px;right:50%;transform:translateX(50%)}}
 </style>
 </head>
 <body>
 <header class="top">
   <a class="brand" href="#"><i></i>Honbit</a>
-  <nav class="nav"><a class="on" href="#" onclick="go('home');return false"><span class="ko">최애 궁합</span><span class="en">Idol match</span></a><a href="#"><span class="ko">사주</span><span class="en">Saju</span></a><a href="#"><span class="ko">오늘</span><span class="en">Today</span></a><a href="#">Pro</a></nav>
-  <div class="r"><button class="btn lang" id="lang">EN</button><button class="btn"><span class="ko">로그인</span><span class="en">Sign in</span></button></div>
+  <nav class="nav"><a class="on" href="#" onclick="go('home');return false"><span class="ko">오늘의 편지</span><span class="en">Today's letter</span></a><a href="#" onclick="go('pro');return false">Pro</a><a href="#"><span class="ko">도움말</span><span class="en">Help</span></a></nav>
+  <div class="r"><button class="lnk" id="lang">EN</button><a class="lnk" href="#"><span class="ko">로그인</span><span class="en">Sign in</span></a></div>
 </header>
 
 <main>
-<!-- HOME -->
+<!-- 1 HOME -->
 <section class="screen on" id="s-home"><div class="wrap">
   <div class="hero">
-    <div>
-      <span class="kicker">K-pop compatibility · Saju · MBTI</span>
-      <h1><span class="ko">당신의 <b>혼빛</b>은?</span><span class="en">What's your <b>Honbit</b>?</span></h1>
-      <p class="sub"><span class="ko">최애랑 나, 사주로 보는 케미 점수. 60초, 무료, 가입 없음.</span><span class="en">Your chemistry with your bias, read through Korean saju. 60s, free, no sign-up.</span></p>
-      <div class="picker">
-        <div class="f2"><div><label><span class="ko">최애</span><span class="en">Bias</span></label><input id="idol" placeholder="정국, 방찬, 카리나…" data-en="Jungkook, Bang Chan, Karina…"></div><div><label><span class="ko">내 생일</span><span class="en">My birthday</span></label><input placeholder="1999-03-21"></div></div>
-        <button class="btn cta big" onclick="go('res')"><span class="ko">궁합 보기</span><span class="en">See our match</span> →</button>
-      </div>
-      <div class="quick"><span class="chip" onclick="pick('정국')"><i style="color:var(--fire)"></i>정국 · BTS</span><span class="chip" onclick="pick('방찬')"><i style="color:var(--water)"></i>방찬 · SKZ</span><span class="chip" onclick="pick('카리나')"><i style="color:var(--metal)"></i>카리나 · aespa</span><span class="chip" onclick="pick('하니')"><i style="color:var(--wood)"></i>하니 · NJZ</span><span class="chip" onclick="pick('민규')"><i style="color:var(--earth)"></i>민규 · SVT</span></div>
-      <p class="trust"><span class="ko">무료 · 가입 없음 · 60초 · 엔터테인먼트용 · 아이돌 궁합은 계속 무료</span><span class="en">Free · no sign-up · 60s · for entertainment · idol match stays free</span></p>
+    <div class="copy">
+      <div class="eyebrow"><span class="ko">매일 아침 7시 · 사주 픽션</span><span class="en">Every morning at 7 · saju fiction</span></div>
+      <h1><span class="ko">최애와 너의<br><em>오늘 이야기</em>가<br>매일 도착해요.</span><span class="en">Your story with<br>your bias, <em>delivered</em><br>every morning.</span></h1>
+      <p class="sub"><span class="ko">생일 하나로 만든 너의 사주에 최애를 넣으면, 달(月)이 매일 아침 한 편씩 편지를 써요. 오늘의 케미, 조심할 시간, 설레는 장면까지.</span><span class="en">Give Dal your birthday and your bias, and every morning a letter arrives — today's chemistry, the hour to watch, the scene that makes your heart skip.</span></p>
+      <form class="form" onsubmit="go('ep');return false">
+        <div class="fld"><label><span class="ko">최애</span><span class="en">Your bias</span></label><input id="idol" placeholder="정국" data-en="Jungkook"></div>
+        <div class="fld"><label><span class="ko">내 생일</span><span class="en">Your birthday</span></label><input placeholder="1999. 03. 21"></div>
+        <button class="btn solid big" type="submit"><span class="ko">오늘 편 받기</span><span class="en">Get today's letter</span> →</button>
+      </form>
+      <div class="note"><span><span class="ko">무료 · 가입 없음 · 첫 편은 바로 읽어요</span><span class="en">Free · no sign-up · read the first letter right away</span></span><span><span class="ko">엔터테인먼트용 픽션 · 아이돌 궁합은 계속 무료</span><span class="en">Entertainment fiction · idol match stays free</span></span></div>
     </div>
-    <div class="stage">
-      <div class="halo"></div><div class="ring"></div><div class="dots" id="dots"></div>
-      <div class="frame"><img id="who" src="assets/dal.webp" alt=""></div>
-      <span class="tag a chip">MOON · <span class="ko">달</span><span class="en">Dal</span></span><span class="tag b chip">60s</span><span class="tag c chip" style="color:#ffd0ea;border-color:rgba(255,94,192,.5)">K-POP <span class="ko">궁합</span><span class="en">MATCH</span></span>
-      <div class="who"><button class="on" onclick="setWho('dal',this)"><span class="ko">달</span><span class="en">Dal</span></button><button onclick="setWho('byeol',this)"><span class="ko">별</span><span class="en">Byeol</span></button></div>
+    <div class="art">
+      <div class="envelope"><span class="seal">EP1</span><div class="from"><span><span class="ko">보낸 사람</span><span class="en">From</span></span><b>달 · Dal</b></div><p><span class="ko">"오늘 오후 3시, 정국이 네 생각을 한 번 하게 될 거야. 이유는 편지 안에."</span><span class="en">"At 3 p.m. today he'll think of you once. Why — it's in the letter."</span></p></div>
+      <img src="assets/dal.webp" alt="">
     </div>
   </div>
 
-  <div class="rows">
-    <a class="rowc" href="#"><span class="ic" style="color:var(--earth)">60S</span><span><b><span class="ko">내 사주</span><span class="en">My saju</span></b><span><span class="ko">명식부터 연애운까지</span><span class="en">Chart to love luck</span></span></span></a>
-    <a class="rowc" href="#"><span class="ic" style="color:var(--water)">DAY</span><span><b><span class="ko">오늘의 카드</span><span class="en">Today's card</span></b><span><span class="ko">매일 한 장, 스트릭</span><span class="en">One a day, streaks</span></span></span></a>
-    <a class="rowc" href="#"><span class="ic" style="color:var(--lilac)">MBTI</span><span><b>MBTI × <span class="ko">사주</span><span class="en">Saju</span></b><span><span class="ko">둘이 만나면 새로운 나</span><span class="en">Two lenses, one you</span></span></span></a>
-    <a class="rowc" href="#"><span class="ic" style="color:var(--fire)">FAN</span><span><b><span class="ko">팬 랭킹</span><span class="en">Fan ranking</span></b><span><span class="ko">팬덤 케미 상위 100</span><span class="en">Top 100 in your fandom</span></span></span></a>
+  <div class="steps">
+    <div class="step"><div class="k">01</div><b><span class="ko">오늘 편, 지금 바로</span><span class="en">Today's letter, right now</span></b><span><span class="ko">최애와 생일을 넣으면 첫 편이 바로 열려요. 케미 점수 대신, 장면으로.</span><span class="en">Bias + birthday opens the first letter instantly. A scene, not a score.</span></span></div>
+    <div class="step"><div class="k">02</div><b><span class="ko">내일 아침 7시, 다음 편</span><span class="en">Tomorrow at 7, the next one</span></b><span><span class="ko">알림을 켜두면 매일 아침 한 편. 오늘의 사주가 이야기를 바꿔요.</span><span class="en">Turn on notifications and a new letter lands each morning. Today's saju rewrites the story.</span></span></div>
+    <div class="step"><div class="k">03</div><b><span class="ko">명대사는 카드로</span><span class="en">The line becomes a card</span></b><span><span class="ko">편지 속 한 줄을 카드로 저장·공유. 친구는 그 자리에서 자기 편지를 받아요.</span><span class="en">Save one line as a card and share it — friends get their own letter right there.</span></span></div>
   </div>
 
-  <div class="live"><div class="tk" id="tk"></div></div>
-
-  <div class="posters">
-    <div class="poster fire"><div><div class="stk"><span>S TIER</span><span>87%</span></div><div class="nm" style="margin-top:10px">JUNG<br><b>KOOK</b><br>× ME</div></div><div><div class="box"><small>VERDICT</small>불꽃이 물을 만나 김이 난다 · 밀당형</div><div class="url">HONBITSAJU.COM</div></div></div>
-    <div class="poster water"><div><div class="stk"><span>A TIER</span><span>74%</span></div><div class="nm" style="margin-top:10px">BANG<br><b>CHAN</b><br>× ME</div></div><div><div class="box"><small>VERDICT</small>서로를 채우는 물 · 안정형</div><div class="url">HONBITSAJU.COM</div></div></div>
-    <div class="poster wood"><div><div class="stk"><span>S TIER</span><span>91%</span></div><div class="nm" style="margin-top:10px">HAN<br><b>NI</b><br>× ME</div></div><div><div class="box"><small>VERDICT</small>나무가 자라는 봄 · 성장형</div><div class="url">HONBITSAJU.COM</div></div></div>
+  <div class="sec"><div class="h"><h2><span class="ko">오늘 도착한 명대사</span><span class="en">Today's lines</span></h2><a href="#"><span class="ko">더 보기 →</span><span class="en">More →</span></a></div>
+    <div class="quotes">
+      <div class="q fire"><div class="t">EP.12 · <span class="ko">정국 × 수</span><span class="en">Jungkook × Water</span></div><p><span class="ko">"네가 웃을 때만 불이 잠잠해져. 오늘은 세 번쯤."</span><span class="en">"The fire only settles when you laugh. Three times today, I think."</span></p><div class="m"><span>@minji__</span><span>♥ 412</span></div></div>
+      <div class="q water"><div class="t">EP.3 · <span class="ko">방찬 × 화</span><span class="en">Bang Chan × Fire</span></div><p><span class="ko">"물이 먼저 물어봐. 오늘 저녁 7시, 문자 하나."</span><span class="en">"Water asks first. Tonight at seven, one message."</span></p><div class="m"><span>@hana.ai</span><span>♥ 388</span></div></div>
+      <div class="q wood"><div class="t">EP.27 · <span class="ko">하니 × 목</span><span class="en">Hanni × Wood</span></div><p><span class="ko">"봄은 기다리는 사람한테 먼저 와. 넌 이미 기다리고 있잖아."</span><span class="en">"Spring comes first to the one who waits. And you're already waiting."</span></p><div class="m"><span>@jko</span><span>♥ 301</span></div></div>
+    </div>
   </div>
 
-  <div class="foot"><span><a href="#"><span class="ko">블로그</span><span class="en">Blog</span></a> · <a href="#"><span class="ko">도움말</span><span class="en">Help</span></a> · <a href="#">Pro</a></span><span>© Honbit · <a href="#"><span class="ko">약관</span><span class="en">Terms</span></a> · <a href="#"><span class="ko">개인정보</span><span class="en">Privacy</span></a></span></div>
+  <div class="foot"><span><a href="#" onclick="go('pro');return false">Pro</a> · <a href="#"><span class="ko">도움말</span><span class="en">Help</span></a> · <a href="#"><span class="ko">블로그</span><span class="en">Blog</span></a></span><span>© Honbit · <a href="#"><span class="ko">약관</span><span class="en">Terms</span></a> · <a href="#"><span class="ko">개인정보</span><span class="en">Privacy</span></a></span></div>
 </div></section>
 
-<!-- RESULT -->
-<section class="screen" id="s-res"><div class="wrap">
-  <div class="res">
-    <div class="score glass">
-      <div class="head"><span class="av" style="background:linear-gradient(135deg,#ffe066,#ff5ec0)">JK</span><span class="ko">정국 × 나</span><span class="en">Jungkook × me</span><span class="mini" style="margin-left:auto"><img src="assets/dal.webp" alt=""></span><span class="chip"><span class="ko">불 × 물</span><span class="en">Fire × Water</span></span></div>
-      <div class="two">
-        <div class="bigbox"><div class="n">87</div><div class="t"><b>S TIER</b><span><span class="ko">상위 6% · 불꽃 케미</span><span class="en">Top 6% · spark chemistry</span></span></div></div>
-        <div class="cols">
-          <div class="col"><div class="bar"><b style="height:38%;background:var(--wood)"></b></div><em>38</em><i>WOOD</i></div>
-          <div class="col"><div class="bar"><b style="height:86%;background:var(--fire)"></b></div><em>86</em><i>FIRE</i></div>
-          <div class="col"><div class="bar"><b style="height:52%;background:var(--earth)"></b></div><em>52</em><i>EARTH</i></div>
-          <div class="col"><div class="bar"><b style="height:31%;background:var(--metal)"></b></div><em>31</em><i>METAL</i></div>
-          <div class="col"><div class="bar"><b style="height:79%;background:var(--water)"></b></div><em>79</em><i>WATER</i></div>
-        </div>
-      </div>
-      <p class="line"><span class="ko">정국의 불(火)이 내 물(水)을 만나 김이 나는 조합 — 서로를 끊임없이 자극해요. 밀당이 매력, 과열만 조심.</span><span class="en">His fire meets your water and steams — you keep sparking each other. Push-and-pull is the charm; just watch the boil-over.</span></p>
-      <div class="insights">
-        <div class="ins"><b><i style="color:var(--fire)"></i><span class="ko">끌림</span><span class="en">Pull</span></b><span class="ko">첫인상은 강하게, 오래가는 건 대화.</span><span class="en">Strong first impression; conversation lasts.</span></div>
-        <div class="ins"><b><i style="color:var(--water)"></i><span class="ko">주의</span><span class="en">Watch</span></b><span class="ko">둘 다 불붙으면 식히는 쪽이 없어요.</span><span class="en">When you both flare, nobody cools it.</span></div>
-        <div class="ins"><b><i style="color:var(--earth)"></i><span class="ko">오늘</span><span class="en">Today</span></b><span class="ko">토(土)가 들어오는 날 — 약속 잡기 좋은 날.</span><span class="en">Earth day — good for making plans.</span></div>
-      </div>
-      <div class="actions"><button class="btn cta big" onclick="go('card')"><span class="ko">판정카드 공유하기</span><span class="en">Share my verdict card</span> →</button><button class="btn"><span class="ko">팬보드에 남기기</span><span class="en">Post to fan board</span></button><button class="btn ghost" onclick="go('home')"><span class="ko">다른 최애로</span><span class="en">Another bias</span></button></div>
-      <p class="pro"><b>Pro</b> · <span class="ko">내 명식 자리별 풀이·인생 시간표 16구간은 커플 Pro — 아이돌 궁합은 계속 무료.</span><span class="en">Position-by-position reading &amp; 16-phase timeline in Couple Pro — idol match stays free.</span></p>
+<!-- 2 EPISODE -->
+<section class="screen" id="s-ep"><div class="wrap">
+  <div class="ep">
+    <div>
+      <article class="letter">
+        <div class="head"><span><span class="ko">보낸 사람</span><span class="en">From</span> <b>달 · Dal</b></span><span>EP.1 · <span class="ko">2026. 9. 4 (금)</span><span class="en">Sep 4, 2026 (Fri)</span></span></div>
+        <h2><span class="ko">첫 만남은 오후 3시,<br>네가 먼저 웃는다.</span><span class="en">First meeting at 3 p.m.<br>You smile first.</span></h2>
+        <div class="meta"><span class="hot"><span class="ko">설렘 지수 87</span><span class="en">Flutter 87</span></span><span><span class="ko">정국 × 나 · 불 × 물</span><span class="en">Jungkook × me · Fire × Water</span></span><span><span class="ko">오늘의 시간 15:00</span><span class="en">Today's hour 15:00</span></span></div>
+        <p><span class="ko">오늘 너의 사주엔 토(土)가 들어와. 땅이 단단해지는 날이라, 평소라면 흘려보냈을 말 한마디가 오늘은 발밑에 남아. 정국의 불(火)은 그 위에서 잘 탄다 — 그러니까 오늘은 네가 먼저 웃어도 되는 날.</span><span class="en">Earth enters your chart today. On a day when the ground firms up, a word you'd usually let pass stays under your feet. His fire burns well on it — so today you're allowed to smile first.</span></p>
+        <p class="say"><span class="ko">"어, 여기 자주 와요?" — 상상 속 대사가 아니라, 오늘 네 오행이 만들어낸 확률 73%짜리 첫마디.</span><span class="en">"Oh — you come here often?" Not an imagined line. The 73% opening your elements wrote for today.</span></p>
+        <div class="fade"><p><span class="ko">3시가 지나면 불이 식기 시작해. 그때 네가 할 일은 딱 하나인데, 그건 물(水)만 아는 방법이라서 —</span><span class="en">After three, the fire starts to cool. There's exactly one thing to do then, and only water knows how —</span></p><p><span class="ko">달이 귀띔해 주는 오늘의 한 수, 그리고 정국이 널 떠올리는 정확한 이유.</span><span class="en">Dal's one move for today, and the exact reason he thinks of you.</span></p></div>
+        <div class="gate"><div><b><span class="ko">오늘 편 끝까지 읽기</span><span class="en">Read today's letter to the end</span></b><span><span class="ko">Pro · 첫 달 ₩4,900 · 매일 풀버전 + 밤 편지 + 커플 리딩 · 언제든 해지</span><span class="en">Pro · first month ₩4,900 · full letters daily + night letter + couple reading · cancel anytime</span></span></div><button class="btn" onclick="go('pro')"><span class="ko">Pro 시작</span><span class="en">Start Pro</span> →</button></div>
+        <div class="sign"><img src="assets/dal.webp" alt=""><span><span class="ko">내일 아침 7시에 다음 편 · EP.2 「비 오는 날의 우산」</span><span class="en">Next letter tomorrow at 7 · EP.2 "An umbrella on a rainy day"</span></span></div>
+      </article>
+      <div class="next"><span class="clock">07:00</span><span><b><span class="ko">내일 편 알림 받기 (무료)</span><span class="en">Get tomorrow's letter (free)</span></b><br><span class="ko">iOS 는 홈 화면에 추가하면 알림이 와요.</span><span class="en">On iOS, add to Home Screen for notifications.</span></span><button class="btn acc"><span class="ko">알림 켜기</span><span class="en">Turn on</span></button></div>
     </div>
-    <aside class="aside">
-      <div class="poster fire"><div><div class="stk"><span>S TIER</span><span>87%</span><span>FIRE × WATER</span></div><div class="nm" style="margin-top:12px">JUNG<br><b>KOOK</b><br>× ME</div></div><div><div class="box"><small>VERDICT</small><span class="ko">불꽃이 물을 만나 김이 난다 · 밀당형</span><span class="en">Fire meets water and steams · push-and-pull</span></div><div class="url">HONBITSAJU.COM/KO/IDOL-MATCH/JUNGKOOK</div></div></div>
-      <p class="hint"><span class="ko">공유 카드 미리보기 · 사진 없이 타이포 포스터, 색 = 지배 오행</span><span class="en">Share-card preview · typographic, colour = dominant element</span></p>
-      <div class="mate glass"><div class="pic"><img src="assets/byeol.webp" alt=""></div><div><b><span class="ko">별이 읽어주는 오늘</span><span class="en">Byeol reads your day</span></b><span><span class="ko">토(土)의 날 · 약속에 좋은 날 · 스트릭 3일째</span><span class="en">Earth day · good for plans · 3-day streak</span></span></div></div>
+    <aside class="side">
+      <div class="card"><h4><span class="ko">왜 매일 달라져요?</span><span class="en">Why does it change daily?</span></h4><p><span class="ko">네 명식은 그대로지만 매일의 일진(오늘의 오행)이 바뀌어요. 그래서 같은 두 사람의 이야기도 매일 다른 장면이 돼요.</span><span class="en">Your chart stays; the day's elements change. Same two people, a different scene every day.</span></p></div>
+      <div class="quote"><div class="t"><span class="ko">오늘의 명대사 카드</span><span class="en">Today's line card</span></div><p><span class="ko">"오늘은 네가 먼저 웃어도 되는 날."</span><span class="en">"Today you're allowed to smile first."</span></p><button class="btn"><span class="ko">카드로 저장 · 공유</span><span class="en">Save · share card</span></button></div>
+      <div class="pro"><div class="eyebrow" style="color:var(--acc2)">Pro</div><div class="p">₩4,900<small><span class="ko">첫 달 · 이후 ₩19,900</span><span class="en">first month · then ₩19,900</span></small></div><ul><li><span class="ko">매일 아침 편지 풀버전</span><span class="en">Full morning letter daily</span></li><li><span class="ko">밤 편지 — 오늘 하루 정산</span><span class="en">Night letter — how today went</span></li><li><span class="ko">선택지로 갈리는 이야기</span><span class="en">Story branches by your choice</span></li><li><span class="ko">내 명식 자리별 풀이 · 커플 리딩</span><span class="en">Position-by-position chart · couple reading</span></li></ul><button class="btn solid" onclick="go('pro')"><span class="ko">Pro 시작</span><span class="en">Start Pro</span> →</button><div class="free"><span class="ko">오늘 편 티저와 아이돌 궁합은 계속 무료예요.</span><span class="en">Today's teaser and idol match stay free.</span></div></div>
     </aside>
   </div>
 </div></section>
 
-<!-- CARD -->
-<section class="screen" id="s-card"><div class="wrap">
-  <div class="cardgrid">
-    <div><span class="kicker"><span class="ko">판정카드 · 공유</span><span class="en">Verdict card · share</span></span>
-      <h1 style="font-size:clamp(32px,4.2vw,52px)"><span class="ko">내 카드,<br><b>내 스토리에.</b></span><span class="en">Your card,<br><b>your story.</b></span></h1>
-      <p class="sub"><span class="ko">인스타 스토리·스레드·X 에 바로. 링크로 들어온 친구는 착지한 자리에서 자기 궁합을 봐요.</span><span class="en">Straight to IG Stories, Threads or X. Friends who land from it get their own match right there.</span></p>
-      <div class="actions"><button class="btn cta big"><span class="ko">이미지 저장</span><span class="en">Save image</span></button><button class="btn"><span class="ko">링크 복사</span><span class="en">Copy link</span></button><button class="btn"><span class="ko">스토리 9:16</span><span class="en">Story 9:16</span></button></div>
-      <div class="rows"><div class="rowc"><span class="ic" style="color:var(--lilac)">4:5</span><span><b>4:5 · 9:16 · 1:1</b><span><span class="ko">플랫폼별 자동</span><span class="en">Auto per platform</span></span></span></div><div class="rowc"><span class="ic" style="color:var(--fire)">火</span><span><b><span class="ko">색 = 지배 오행</span><span class="en">Colour = element</span></b><span><span class="ko">불=핑크/옐로, 물=딥블루, 목=민트</span><span class="en">fire=pink/yellow, water=blue, wood=mint</span></span></span></div></div>
+<!-- 3 PRO -->
+<section class="screen" id="s-pro"><div class="wrap">
+  <div class="pro2">
+    <div>
+      <div class="eyebrow">Pro</div>
+      <h1 style="font-size:clamp(36px,4.8vw,60px)"><span class="ko">하루가 <em>두 통</em>의<br>편지가 돼요.</span><span class="en">Your day becomes<br><em>two letters.</em></span></h1>
+      <p class="sub"><span class="ko">아침엔 오늘의 장면, 밤엔 하루의 정산. 네 선택으로 이야기가 갈리고, 네 명식이 자리마다 읽혀요.</span><span class="en">A scene in the morning, a reckoning at night. Your choices branch the story; your chart is read position by position.</span></p>
+      <div class="day">
+        <div class="row"><span class="t">07:00</span><div><b><span class="ko">아침 편지 · 풀버전</span><span class="en">Morning letter · full</span></b><span><span class="ko">오늘의 시간·장면·한 수까지 끝까지</span><span class="en">Today's hour, scene and the one move — to the end</span></span></div></div>
+        <div class="row"><span class="t">15:00</span><div><b><span class="ko">오늘의 시간 알림</span><span class="en">The hour's nudge</span></b><span><span class="ko">편지에 적힌 그 시간에 한 줄</span><span class="en">One line at the hour the letter named</span></span></div></div>
+        <div class="row"><span class="t">22:00</span><div><b><span class="ko">밤 편지 · 정산</span><span class="en">Night letter · reckoning</span></b><span><span class="ko">오늘 실제로 어땠는지 네가 고르면, 내일 편이 바뀌어요</span><span class="en">Tell Dal how today really went — tomorrow's letter changes</span></span></div></div>
+        <div class="row"><span class="t"><span class="ko">언제든</span><span class="en">Anytime</span></span><div><b><span class="ko">내 명식 · 커플 리딩</span><span class="en">My chart · couple reading</span><span class="tag">Couple Pro</span></b><span><span class="ko">자리별 풀이, 인생 시간표 16구간, 2026 열두 달</span><span class="en">Position-by-position, 16-phase timeline, 12 months of 2026</span></span></div></div>
+      </div>
+      <p class="note" style="max-width:560px"><span class="ko">아이돌 궁합과 오늘 편 티저는 계속 무료예요. Pro 는 <b style="color:var(--fg)">너의 하루와 너의 명식</b>에 대한 거예요.</span><span class="en">Idol match and the daily teaser stay free. Pro is about <b style="color:var(--fg)">your day and your chart</b>.</span></p>
     </div>
-    <div><div class="poster fire" style="aspect-ratio:9/16"><div><div class="stk"><span>S TIER</span><span>87%</span><span>FIRE × WATER</span></div><div class="nm" style="margin-top:16px;font-size:clamp(44px,5.4vw,72px)">JUNG<br><b>KOOK</b><br>× ME</div></div><div><div class="box"><small>VERDICT</small><span class="ko">불꽃이 물을 만나 김이 난다 · 밀당형 · 상위 6%</span><span class="en">Fire meets water and steams · push-and-pull · top 6%</span></div><div class="url">HONBITSAJU.COM</div></div></div></div>
+    <div class="plan"><div class="eyebrow" style="color:var(--acc2)"><span class="ko">커플 Pro</span><span class="en">Couple Pro</span></div><div class="p">₩4,900<small><span class="ko">첫 달</span><span class="en">first month</span></small></div><div class="p2"><span class="ko">이후 ₩19,900/월 · 카카오페이 1클릭 · 언제든 해지</span><span class="en">then ₩19,900/mo · one-tap KakaoPay · cancel anytime</span></div><ul><li><span class="ko">아침·밤 편지 풀버전 매일</span><span class="en">Morning &amp; night letters, full, daily</span></li><li><span class="ko">선택지로 갈리는 이야기</span><span class="en">Story branches by your choice</span></li><li><span class="ko">내 명식 자리별 풀이</span><span class="en">Position-by-position chart</span></li><li><span class="ko">인생 시간표 16구간 · 2026 열두 달</span><span class="en">16-phase timeline · 12 months of 2026</span></li><li><span class="ko">최애 생일 카운트 · 스트릭 카드</span><span class="en">Bias birthday count · streak card</span></li></ul><button class="btn solid big" style="width:100%"><span class="ko">첫 달 ₩4,900 로 시작</span><span class="en">Start for ₩4,900</span></button><div class="fine"><span class="ko">해지해도 이번 달 끝까지 · 첫 구독 한정 가격 · 표시 가격은 부가세 포함</span><span class="en">Cancel anytime, keep the month · intro price for first subscription · VAT included</span></div></div>
   </div>
 </div></section>
 </main>
 
-<nav class="flow"><span>시안 v2</span><button class="on" data-s="home" onclick="go('home')">1 홈</button><button data-s="res" onclick="go('res')">2 궁합 결과</button><button data-s="card" onclick="go('card')">3 판정카드</button></nav>
+<nav class="flow"><button class="on" data-s="home" onclick="go('home')">1 <span class="ko">홈</span><span class="en">Home</span></button><button data-s="ep" onclick="go('ep')">2 <span class="ko">오늘 편</span><span class="en">Letter</span></button><button data-s="pro" onclick="go('pro')">3 Pro</button></nav>
 
 <script>
 var langBtn=document.getElementById('lang');function setLang(l){document.documentElement.lang=l;langBtn.textContent=l==='ko'?'EN':'KO';document.querySelectorAll('input[data-en]').forEach(function(i){if(!i.dataset.ko)i.dataset.ko=i.placeholder;i.placeholder=l==='en'?i.dataset.en:i.dataset.ko})}langBtn.onclick=function(){setLang(document.documentElement.lang==='ko'?'en':'ko')};
 function go(s){document.querySelectorAll('.screen').forEach(function(x){x.classList.toggle('on',x.id==='s-'+s)});document.querySelectorAll('.flow button[data-s]').forEach(function(b){b.classList.toggle('on',b.dataset.s===s)});window.scrollTo(0,0)}
-function pick(n){document.getElementById('idol').value=n}
-function setWho(w,btn){document.getElementById('who').src='assets/'+w+'.webp';document.querySelectorAll('.who button').forEach(function(b){b.classList.toggle('on',b===btn)});document.querySelector('.tag.a').innerHTML=(w==='dal'?'MOON · <span class="ko">달</span><span class="en">Dal</span>':'STAR · <span class="ko">별</span><span class="en">Byeol</span>')}
-var dots=document.getElementById('dots'),cols=['#5eead4','#ff5ec0','#fbbf24','#d0d6e8','#7cc4ff'];cols.forEach(function(c){var d=document.createElement('i');d.style.color=c;dots.appendChild(d)});
-(function(){var t0=performance.now();function f(now){var t=(now-t0)/1000,els=dots.children,R=dots.clientWidth/2,Ry=dots.clientHeight/2;for(var i=0;i<els.length;i++){var a=t*0.22+i*(Math.PI*2/5);els[i].style.transform='translate('+(Math.cos(a)*R*0.98)+'px,'+(Math.sin(a)*Ry*0.98)+'px)'}requestAnimationFrame(f)}requestAnimationFrame(f)})();
-var items=[['정국 × 물','var(--fire)'],['방찬 × 불','var(--water)'],['카리나 × 목','var(--metal)'],['하니 × 화','var(--wood)'],['민규 × 수','var(--earth)'],['유진 × 토','var(--fire)'],['제니 × 금','var(--fire)'],['필릭스 × 목','var(--water)']];
-var tk=document.getElementById('tk'),html='';for(var r=0;r<3;r++)items.forEach(function(it,i){html+='<span><i style="background:'+it[1]+'"></i>'+it[0]+' · <b style="color:var(--fg)">'+(70+((i*7+r*3)%25))+'%</b></span>'});tk.innerHTML=html;
 </script>
 </body>
 </html>
